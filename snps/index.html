@@ -1,21 +1,37 @@
-   <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-   <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
-   <title>BioFolD - Biomolecules, Folding and Disease</title>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="BioFolD - SNPs">
+    <meta name="author" content="BioFolD - Emidio Capriotti">
+    <link rel="icon" href="/favicon.ico">
 
-   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-   <meta name="Keywords" content=" 
-   stability, folding, disease, mutation, SNP, Meta-SNP, 
-   I-Mutant, PhD-SNP, K-Fold, SNPs&GO, ContrastRank, machine learning, 
-   Emidio Capriotti, Bioinformatics, Proteins,
-   University, Alabama, Birmingham, BioFolD">
-   <meta name="Author" content="Emidio Capriotti">
-   <meta name="Generator" content="">
+    <title>BioFolD - SNPs</title>
+    <link rel="stylesheet" href="maps/style.css" type="text/css" />
+    <link rel="stylesheet" href="maps/mapstyle.css" type="text/css" />
 
-   <link rel="stylesheet" href="../pages/style.css" 
-   type="text/css" title="BioFolD - Biomolecules, Folding and Disease">
-   <link rel="stylesheet" href="maps/mapstyle.css" type="text/css" />
-   </head>
-   
+    <!-- Bootstrap core CSS -->
+    <link href="../pages/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug 
+    <link href="pages/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    -->
+
+    <!-- Custom styles for this template -->
+    <link href="../pages/style/jumbotron-narrow-biofold.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]
+    <script src="pages/assets/js/ie-emulation-modes-warning.js"></script>
+    -->
+
+	   
+  </head>
+  
+     
     <script type="text/javascript">
     var today = new Date();
     var year_now = today.getFullYear();
@@ -39,8 +55,8 @@
     }
     function writeTools()
     {
-    var Tools=["ALL","SNPs&GO","PhD-SNP","DrCancer","Meta-SNP","SNPs"];
-    for (optionCounter = 0; optionCounter <= 5; optionCounter++)
+    var Tools=["ALL","SNPs&GO","PhD-SNP","DrCancer","Meta-SNP","SNPs","ContrastRank","PhD-SNPg"];
+    for (optionCounter = 0; optionCounter <= 7; optionCounter++)
     {
     document.write('<OPTION value=' + Tools[optionCounter] + '>' + Tools[optionCounter]);
     }
@@ -77,7 +93,7 @@
         
     function addServer(name,month,year,mcolor)
         {
-        var htool = {"snps": "SNPs\@BioFolD", "snpsgo": "SNPs\&GO", "phdsnp": "PhD\-SNP", "metasnp": "Meta-SNP", "drcancer": "DrCancer" };
+        var htool = {"snps": "SNPs\@BioFolD", "snpsgo": "SNPs\&GO", "phdsnp": "PhD\-SNP", "metasnp": "Meta-SNP", "drcancer": "DrCancer","phdsnpg": "PhD\-SNPg", "contrastrank": "ContrastRank"  };
         if (htool[name] === undefined )
         {
         	var geoname="Other";
@@ -110,7 +126,7 @@
             "Google Map")
             
         var mbass = new OpenLayers.Icon("maps/img/bass.png", new OpenLayers.Size(13,13));
-        var sbass = new OpenLayers.Layer.GeoRSS( 'HHU', "maps/georss/hhu.xml", {'icon': mbass});
+        var sbass = new OpenLayers.Layer.GeoRSS( 'unibo', "maps/georss/unibo.xml", {'icon': mbass});
 		
 		var snps = addServer('snps',month,year,'yellow');
 		var phdsnp = addServer('phdsnp',month,year,'orange');
@@ -118,8 +134,9 @@
 		var drcancer = addServer('drcancer',month,year,'blu');
 		var metasnp = addServer('metasnp',month,year,'green');
 		var contrastrank = addServer('contrastrank',month,year,'pink');
+                var phdsnpg = addServer('phdsnpg',month,year,'white');
 
-    	map.addLayers([satellite,snps,phdsnp,snpsgo,drcancer,metasnp,contrastrank,sbass]); 
+    	map.addLayers([satellite,snps,phdsnp,snpsgo,drcancer,metasnp,contrastrank,phdsnpg,sbass]); 
 
 
 		map.setCenter(new OpenLayers.LonLat(0,0), 1);
@@ -157,9 +174,13 @@
 		map.layers[1].destroy();
 		var ncontrastrank = addServer('contrastrank',month,year,'pink');
 		map.addLayer(ncontrastrank);
+
+		map.layers[1].destroy();
+                var nphdsnpg = addServer('phdsnpg',month,year,'white');
+                map.addLayer(nphdsnpg);
 	
 		var mbass = new OpenLayers.Icon("maps/img/bass.png", new OpenLayers.Size(13,13));
-		var sbass = new OpenLayers.Layer.GeoRSS( 'HHU', "maps/georss/hhu.xml", {'icon': mbass});
+		var sbass = new OpenLayers.Layer.GeoRSS( 'unibo', "maps/georss/unibo.xml", {'icon': mbass});
 		map.addLayer(sbass);
 
     	map.refresh();
@@ -182,9 +203,9 @@
     function show_layer(servername)
     	{
     	var i;
-    	var ntool = {"SNPs\@BioFolD": 1, "SNPs\&GO": 3, "PhD\-SNP": 2, "DrCancer": 4, "HHU": 7, "Meta\-SNP": 5, "ContrastRank": 6 };
+    	var ntool = {"SNPs\@BioFolD": 1, "SNPs\&GO": 3, "PhD\-SNP": 2, "DrCancer": 4, "unibo": 7, "Meta\-SNP": 5, "ContrastRank": 6 , "PhD\-SNPg": 7 };
     	var numserver = ntool[servername];
-   		for (i = 1; i <= 7; i++)
+   		for (i = 1; i <= 8; i++)
     	{
     	if (i != numserver)
     	{
@@ -202,7 +223,7 @@
     function show_alllayer()
     	{
     	var i;
-   		for (i = 1; i <= 7; i++)
+   		for (i = 1; i <= 8; i++)
     	{
     		map.layers[i].setVisibility(true);
     	}   	
@@ -211,50 +232,60 @@
     	}
     
    </script>
-   
-   
-   
-   
-   <body onload="get_now();">
-   <!-- Start main -->
-   <div id="main">
-   <br><br><br>
-    <!-- Start header -->
-    <div id="content"><img class="header" src="../pages/img/strubio.png" 
-    alt="BioFolD - Biomolecules, Folding and Disease" align="center" /><br />
-      <br />
-    </div>
-   
-    
-    <!-- End header -->
 
-    <!-- Start menu -->
-    <div id="menu">
-          <table class="navig">
-          <tbody><tr>
-           <td class="blank"></td>
-           <td class="cell"><a href="index.html">Home</a></td>
-           <td class="cell"><a href="../pages/research.html">Research</a></td>
-           <td class="cell"><a href="../pages/people.html">People</a></td>
-           <td class="cell"><a href="../pages/resources.html">Resources</a></td>
-           <td class="cell"><a href="../pages/papers.html">Publications</a></td>
-           <td class="cell"><a href="../courses/">Training</a></td>
-           <td class="blank"></td></tr>
-        </tbody></table>
-    </div>
-    <!-- End menu -->
+  <body onload="get_now();">
+    <br>
+    <div id="main">
+    <div class="container">
 
-    <!-- Start content -->
-    <div id="content">
-     
-   <p class="txtzone">
-	
-   <br />
-   In this page are reported information about the projects related to the 
+      <div class="jumbotron">
+        <table width="100%">
+        <tr>
+        <td width="90%">
+        <div class='biofold' ><span style="color:#c31e27;">Bio</span><span style="color:#4689a3;">molecules</span> <span style="color:#c31e27;">Fol</span><span style="color:#4689a3;">ding and </span><span style="color:#c31e27;">D</span><span style="color:#4689a3;">isease</span></div><br>
+	</td>
+	<td width="10%">
+	<div class="right_cell">
+        <a href="http://biofold.org">
+        <img src="../pages/img/logo.png" width="75px" align="left">
+        </a>
+        </div>
+	</td>
+	</tr>
+	</table>
+
+	<table width="100%">
+        <tr>
+        <td>
+        <div class="form-inline justify-content-center">
+        <nav>
+          <ul class="nav nav-pills">
+            <li role="presentation" ><a href="../index.html">Home</a></li>
+            <li role="presentation"><a href="../research.html">Research</a></li>
+            <li role="presentation" ><a href="../people.html">People</a></li>
+            <li role="presentation" class='active'><a href="../resources.html">Resources</a></li>
+            <li role="presentation"><a href="../papers.html">Publications</a></li>
+            <li role="presentation"><a href="../training.html">Training</a></li>
+          </ul>
+        </nav>
+        </div>
+        </td>
+        </tr>
+        </table>
+    <br>
+  	<br>
+  	
+
+     <div class="text">
+     <h4 class="title" >SNPs - BioFolD</h4>
+     </div>
+     <p class="text">
+          In this page are reported information about the projects related to the 
    annotation of the impact of Single Nucleotide Variants (SNVs) on 
    human health.
    Currently we have four available web tools located in our server:
    <br /><br />
+     <div class="text">
      <table class="paper">
      <tbody>
      <tr><td valign="top" width=130>
@@ -266,6 +297,17 @@
      <a href="../pages/documents/papers/BioinfDis06.pdf">
      <img width="14" src="../pages/img/pdf.gif"></a>     
      </td></tr>
+     <tr><td valign="top" width=130>
+     <a target=blank
+     href="http://snps.biofold.org/phd-snpg">
+     <b>PhD-SNP<sup>g</sup></b></a></td>
+     <td valign="top">Machine learning method for predicting pathogenic variants     in coding and non-coding regions.
+     <br>
+     <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/">
+     <img src="http://biofold.org/pages/img/pubmed.gif"></a>
+     <a href="documents/papers/phdsnpg-web-2017.pdf">
+     <img width="15" src="http://biofold.org/pages/img/pdf.gif"></a>
+     </td></tr>
      <tr><td valign="top" width=130>     
      <a target=blank href="http://snps.biofold.org/meta-snp">
      <b>Meta-SNP</b></a></td>     
@@ -275,7 +317,7 @@
      <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/">
      <img src="../pages/img/pubmed.gif"></a>
      <a href="../pages/documents/papers/Capriotti_MetaSNP_BMCGenomics13.pdf">
-     <img src="../pages/img/pdf.gif"></a>
+     <img width="14" src="../pages/img/pdf.gif"></a>
      </td></tr> 
      <tr><td valign="top" width=130>     
      <a target=blank href="http://snps.biofold.org/snps-and-go">
@@ -286,11 +328,11 @@
      <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/19514061">
      <img src="../pages/img/pubmed.gif"></a>  
      <a href="../pages/documents/papers/Calabrese_HumMut09.pdf">
-     <img src="../pages/img/pdf.gif"></a>
+     <img width="14" src="../pages/img/pdf.gif"></a>
      <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/21992054">
      <img src="../pages/img/pubmed.gif"></a>  
      <a href="../pages/documents/papers/Capriotti_AIMM_BMCBioinformatics2011.pdf">
-     <img src="../pages/img/pdf.gif"></a>
+     <img width="14" src="../pages/img/pdf.gif"></a>
      </td></tr>
      <tr><td valign="top" width=130>     <a target=blank 
      href="http://snps.biofold.org/drcancer/index.html">
@@ -301,7 +343,7 @@
      <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/21992054">
      <img src="../pages/img/pubmed.gif"></a>
      <a href="../pages/documents/papers/Capriotti_Genomics2011.pdf">
-     <img src="../pages/img/pdf.gif"></a>
+     <img width="14" src="../pages/img/pdf.gif"></a>
      </td></tr>    
      <tr><td valign="top" width=130>     <a target=blank
      href="http://snps.biofold.org/contrastrank/index.html">
@@ -312,11 +354,11 @@
      <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/25161249">
      <img src="../pages/img/pubmed.gif"></a>
      <a href="../pages/documents/papers/Tian_Bioinformatics2014.pdf">
-     <img src="../pages/img/pdf.gif"></a>
+     <img width="14" src="../pages/img/pdf.gif"></a>
      </td></tr> 
      </tbody></table>
-
-     <p class="txtzone">
+     <br>
+     <p class="text">
      The implementation of these web servers has been made possible
      with Marie Curie IOF funds of the <a href="mut2dis/index.html" 
      target=blank> Mut2Dis </a> project (PIOF-GA-2009-237225).
@@ -325,6 +367,7 @@
      tools' usage is mapped below. Better statistics about the usage of these resources are available 
      on this <a href="http://biofold.org/awstats/awstats.pl?config=snps.biofold.org" target=_blank>web page<a/>. 
      <br /><br /> 
+     </div>
      <form name="selectlog" method=post  align=center >
      </select>
      <select name="month">
@@ -346,7 +389,7 @@
      <div id="maplegend"> 
      <a style="cursor: pointer;" onclick='show_alllayer();' ><strong>Servers</strong></a>: &nbsp;
      <img src="maps/img/bass.png" width="13" height="13" > 
-     <a style="cursor: pointer;" onclick='show_layer("HHU");' >HHU</a> &nbsp; 
+     <a style="cursor: pointer;" onclick='show_layer("unibo");' >unibo</a> &nbsp; 
      <img src="maps/img/yellow-ball.png" width="11" height="11"> 
      <a style="cursor: pointer;" onclick='show_layer("SNPs\@BioFolD");' >SNPs@BioFolD</a> &nbsp;
      <img src="maps/img/red-ball.png"  width="11" height="11" > 
@@ -359,25 +402,23 @@
      <a style="cursor: pointer;" onclick='show_layer("DrCancer");' >DrCancer</a> &nbsp;
      <img src="maps/img/pink-ball.png" width="11" height="11"  >
      <a style="cursor: pointer;" onclick='show_layer("ContrastRank");' >ContrastRank</a> &nbsp;
+     <img src="maps/img/white-ball.png" width="11" height="11"  >
+     <a style="cursor: pointer;" onclick='show_layer("PhD\-SNPg");' >PhD-SNPg</a> &nbsp;
      </div>
 
      
      </p>
-     <br>
      </p>
-    
-    <!-- Start bottom -->
-    <div id="bottom" class="footer">
-    </div>
-    <!-- End bottom -->
- 
-    <div id="content"><img class="bottom" src="../pages/img/bottom.png" 
-    alt="BioFolD - Biomolecules, Folding and Disease" align="center" /></div>
-    <!-- End footer -->
-  </div>
-    <!-- End Main -->
-  <br>
-  <br>
-  </div>
-</body></html>
-   
+    <br>
+    <br>
+    <div class='footer-ok'><div>
+
+      </div>
+    </div> <!-- /container -->
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug
+    <script src="pages/assets/js/ie10-viewport-bug-workaround.js"></script>
+    -->
+  </body>
+</html>

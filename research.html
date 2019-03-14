@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="BioFolD - Research">
+    <meta name="author" content="BioFolD - Emidio Capriotti">
+    <link rel="icon" href="/favicon.ico">
+
+    <title>BioFolD - Research</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="pages/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug 
+    <link href="pages/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    -->
+
+    <!-- Custom styles for this template -->
+    <link href="pages/style/jumbotron-narrow-biofold.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]
+    <script src="pages/assets/js/ie-emulation-modes-warning.js"></script>
+    -->
+
+	   
+  </head>
+
+  <body >
+    <br>
+    <div class="container">
+
+      <div class="jumbotron">
+        <table width="100%">
+        <tr>
+        <td width="90%">
+        <div class='biofold' ><span style="color:#c31e27;">Bio</span><span style="color:#4689a3;">molecules</span> <span style="color:#c31e27;">Fol</span><span style="color:#4689a3;">ding and </span><span style="color:#c31e27;">D</span><span style="color:#4689a3;">isease</span></div><br>
+	</td>
+	<td width="10%">
+	<div class="right_cell">
+        <a href="http://biofold.org">
+        <img src="pages/img/logo.png" width="75px" align="left">
+        </a>
+        </div>
+	</td>
+	</tr>
+	</table>
+
+	<table width="100%">
+        <tr>
+        <td>
+        <div class="form-inline justify-content-center">
+        <nav>
+          <ul class="nav nav-pills">
+            <li role="presentation"><a href="index.html">Home</a></li>
+            <li role="presentation" class='active' ><a href="pages/research.html">Research</a></li>
+            <li role="presentation"><a href="people.html">People</a></li>
+            <li role="presentation"><a href="resources.html">Resources</a></li>
+            <li role="presentation"><a href="papers.html">Publications</a></li>
+            <li role="presentation"><a href="training.html">Training</a></li>
+          </ul>
+        </nav>
+        </div>
+        </td>
+        </tr>
+        </table>
+    <br>
+  	<br>
+  	<div class="text">
+  	<h4 class="title">Research</h4>
+  	</div>
+  	<p class="text" >
+    The research activity of the BioFolD unit focuses on the following topics:</p>
+    <br>
+    <table class="text" border=0>
+        <tbody><tr><td valign=top>
+    <p class="text">
+    <ul> 
+    <li><p class="text" style='margin: 0px; padding: 0px;'>Effect of protein mutation on human health;</div> 
+    <li><p class="text" style='margin: 0px; padding: 0px;'>Protein folding process;</p>
+    <li><p class="text" style='margin: 0px; padding: 0px;'>RNA and Protein structure comparison and prediction.</p>
+    </ul>
+    </td></tr>
+    </tbody>
+    </table>
+    <br>
+    <div class="text">
+     <h4 class="section">Mutations and Disease</h4>
+    </div>
+    <table border=0 cellpadding="7" cellspacing="7" class="paper">
+      <tbody><tr><td valign=top>
+ 	    <p class='text'><img src="pages/img/disease.png" alt="fi" width="40%" align="right"  /></p>
+ 	      <p class="text">
+Single Nucleotide Polymorphisms (SNPs) are an important source of human
+ 	      genome variability. The non-synonymous SNPs occurring in coding regions
+ 	      resulting in single amino acid polymorphisms (SAPs) may affect protein 
+ 	      function and lead to pathology. We are interested to study the 
+ 	      relationship between mutation and disease to develop machine learning 
+ 	      methods for the prediction of disease-related SAPs. 
+ 	      The input features of our methods are sequence, evolutive and functional
+ 	      information. We have implemented <a target=blank
+        href="http://gpcr2.biocomp.unibo.it/cgi/predictors/PhD-SNP/PhD-SNP.cgi">PhD-SNP</a>, a simple method based on 
+ 	      protein sequence and profile data. Recently, in 
+ 	      <a target=blank href="http://snps-and-go.biocomp.unibo.it/"> SNPs&GO</a>, we improved the accuracy
+ 	      of the detection of disease-related SAPs including protein functional 
+ 	      information. All the predictors has been tested using a cross-validation
+ 	      procedure on a set of annotated SAPs selected from <a target=blank 
+        href="ftp://ftp.expasy.org/databases/uniprot/current_release/knowledgebase/complete/docs/humsavar.txt">
+ 	        SwissVar</a> database.<br>
+ 	      In the 2009 the Marie-Curie IOF project 
+              <a href="../snps/mut2dis">Mut2Dis
+              (PIOF-GA-2009-237225)</a>
+              has been granted by the European Union with ~217K Euro to develop
+              new machine learning based approaches based on protein structure
+              information to predict the impact of SAPs.
+ 	      </p>
+ 	    </td>
+      </tr>
+    </tbody>
+    </table>
+    <br>
+    <div class="text">
+  	<h4 class="section">
+     Protein Folding Stability and Kinetics </h4>
+    </div>
+    <table cellpadding="7" cellspacing="7" class="paper">
+      <tbody><tr><td>
+        <div align="left">
+          <p class="text"><img src="pages/img/folding.png" alt="fi2" width="40%" align="left"   /></p>
+          <p class="text">Protein folding is a complex process that is responsible for the formation 
+            of the protein tree-dimensional structure. In our work we study the protein
+            folding focusing on two main aspects: the protein stability and the folding     
+            kinetics. We are interested to predict the effect of single point protein 
+            mutation on protein stability. To measure the effect of the mutation, we 
+            use the variation of the free energy change (ddG) upon mutation that can be
+            calculated as the difference of the free energy variation (dG) for the 
+            mutant and the wild-type proteins. If we consider the unfolding free 
+            energy we 
+            have that more stable mutations correspond to positive ddG values and less
+            stable mutants to negative ddG. In the 2004 we developed 
+            <a target=blank href="http://gpcr2.biocomp.unibo.it/cgi/predictors/I-Mutant/I-Mutant.cgi">I-Mutant</a> 
+            a neural network binary classification method to predict if a mutation 
+            increase or decrease the protein stability using protein structure.
+            In the 2005 the second version of the program 
+            <a target=blank href="http://gpcr2.biocomp.unibo.it/cgi/predictors/I-Mutant2.0/I-Mutant2.0.cgi">I-Mutant2.0</a> has been 
+            implemented to predict ddG value using only sequence information. 
+            All this methods has been tested using a cross-validation procedure on
+            a set of ddG values extracted from 
+            <a target=blank href="http://gibk26.bse.kyutech.ac.jp/jouhou/Protherm/protherm.html">
+              Protherm </a>database.
+            Currently a new version of the tool is under development.<br> 
+            We are also interested in the understanding of protein folding kinetics. 
+            In general proteins can have two-state kinetics when they folds directly 
+            to the native state from the unfolded state or multi-state kinetics when 
+            the protein folds through at least one intermediate state. The folding 
+            rate describes how fast the folding process is and is related to the 
+            activation energy of the process. In the 2007, 
+            <a target=blank href="http://gpcr2.biocomp.unibo.it/cgi/predictors/K-Fold/K-Fold.cgi">
+              K-Fold</a> tools has been developed to predict
+            the folding kinetics and rate of a given protein using structural 
+            information.<br>
+          </p>
+       
+         
+        </div></td>
+      </tr></tbody>
+    </table>
+    <br>
+    
+    <div class="text">
+     <h4 class="section">Protein and RNA Structure Comparison and Prediction<h4>
+    </div>
+    <table cellpadding="7" cellspacing="7" class="paper">
+      <tbody><tr><td>
+        <p class="text"><img src="pages/img/sara.png" alt="fi3" width="40%" align="right"  />
+        <p class="text">The structure of biologically relevant macromolecules such as protein and
+          RNA is important to understand their function. According to this hypothesis
+          the structure is important to infer the function. Our group
+           is developing methods for structural alignment to 
+          extract common feature between different molecules and use them to predict
+          unknown structure. In the 2008 
+          <a target=blank href="http://sgu.bioinfo.cipf.es/services/SARA/">
+            SARA</a> algorithm has been implemented to align RNA tree-dimensional 
+          structures. A new pipeline using SARA program has been used to assign
+          RNA function using structure similarity.<br>
+          In collaboration with Marc Marti Renom at the
+          <a target=blank href="http://sgt.cnag.cat/">CNAG</a>, Barcelona 
+          (Spain) we are implementing 
+          a statistical potential to score RNA structures and to select near 
+          native ones. We are also interested to develop new methods for RNA
+          structure prediction.     </p>
+        </td></tr></tbody>
+    </table>
+
+
+</p>  
+    <br>
+    <br>
+    <div class='footer-ok'><div>
+
+      </div>
+    </div> <!-- /container -->
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug
+    <script src="pages/assets/js/ie10-viewport-bug-workaround.js"></script>
+    -->
+  </body>
+</html>

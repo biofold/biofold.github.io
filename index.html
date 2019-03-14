@@ -1,22 +1,33 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
-<title>BioFolD - Biomolecules, Folding and Disease</title>
+	<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="PhD-SNPg - Predicting the impact of SNVs">
+    <meta name="author" content="BioFolD - Emidio Capriotti">
+    <link rel="icon" href="/favicon.ico">
 
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<meta name="Keywords" content=" 
-stability, folding, disease, mutation, SNP, 
-I-Mutant, Meta-SNP, PhD-SNP, K-Fold, machine learning, 
-Emidio, Capriotti, Bioinformatics, Proteins
-, University of Bologna, Bologna, unibo">
-<meta name="Author" content="Emidio Capriotti">
-<meta name="Generator" content="">
+    <title>BioFolD - Biomolecules Folding and Disease</title>
 
-<link rel="stylesheet" href="pages/style.css" 
-type="text/css" title="BioFolD - Biomolecules, Folding and Disease"></head><body>
-<script language="javascript" type="text/javascript" src="pages/tag/swfobject.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="pages/dist/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug 
+    <link href="pages/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    -->
 
-<script type="text/javascript">
+    <!-- Custom styles for this template -->
+    <link href="pages/style/jumbotron-narrow-biofold.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]
+    <script src="pages/assets/js/ie-emulation-modes-warning.js"></script>
+    -->
+
+    
+    <script type="text/javascript">
 
         var dmi="";
 
@@ -36,50 +47,58 @@ type="text/css" title="BioFolD - Biomolecules, Folding and Disease"></head><body
 		
                 document.getElementById("unibomap").src=unibo;
         }
-</script>
+  </script>
 
-<body onload="zoomout();">
+	   
+  </head>
 
-  <!-- Start main -->
-  <div id="main">
-  <br><br><br>
-    <!-- Start header -->
-    <div id="content"><img class="header" src="./pages/img/strubio.png" alt="BioFolD -
-                University of Bologna" align="center" /><br />
-      <br />
-    </div>
-   
-    
-    <!-- End header -->
-
-    <!-- Start menu -->
-    <div id="menu">
-      <table class="navig">
-	<tbody><tr>
-	  <td class="blank"></td>
-	  <nav>
-	  <td class="cell"><a href="index.html">Home</a></td>
-	  <td class="cell"><a href="pages/research.html">Research</a></td>
-	  <td class="cell"><a href="pages/people.html">People</a></td>
-	  <td class="cell"><a href="pages/resources.html">Resources</a></td>
-	  <td class="cell"><a href="pages/papers.html">Publications</a></td>
-	  <td class="cell"><a href="courses">Training</a></td>
-	  </nav>
-	  <td class="blank"></td>
-	</tr>
-      </tbody></table>
-    </div>
-    <!-- End menu -->
-
-    <!-- Start content -->
-    <div id="content">
-    
-        <br>
-    <p class="txtzone">
+  <body onload="zoomout();">
     <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The BioFolD Unit is currently hosted at 
-    the <a href="http://www.fabit.unibo.it/">Department of Pharmacy and Biotechnology (FaBiT)</a>, University of Bologna, Bologna, Italy (see below).
-    Computational resources are hosted on a server of the <a href="http://www.mathmodeling.hhu.de/" target=_blank>Institute for Mathematical Modeling of Biological Systems, University of Düsseldorf</a>.
+    <div class="container">
+
+      <div class="jumbotron">
+        <table width="100%">
+        <tr>
+        <td width="90%">
+        <div class='biofold' ><span style="color:#c31e27;">Bio</span><span style="color:#4689a3;">molecules</span> <span style="color:#c31e27;">Fol</span><span style="color:#4689a3;">ding and </span><span style="color:#c31e27;">D</span><span style="color:#4689a3;">isease</span></div><br>
+	</td>
+	<td width="10%">
+	<div class="right_cell">
+        <a href="http://biofold.org">
+        <img src="pages/img/logo.png" width="75px" align="left">
+        </a>
+        </div>
+	</td>
+	</tr>
+	</table>
+
+	<table width="100%">
+        <tr>
+        <td>
+        <div class="form-inline justify-content-center">
+        <nav>
+          <ul class="nav nav-pills">
+            <li role="presentation" class="active"><a href="index.html">Home</a></li>
+            <li role="presentation"><a href="research.html">Research</a></li>
+            <li role="presentation"><a href="people.html">People</a></li>
+            <li role="presentation"><a href="resources.html">Resources</a></li>
+            <li role="presentation"><a href="papers.html">Publications</a></li>
+            <li role="presentation"><a href="training.html">Training</a></li>
+          </ul>
+        </nav>
+        </div>
+        </td>
+        </tr>
+        </table>
+        <br>
+  	<br>
+  	<div class="text">
+     <h4 class="title" >BioFolD</h4>
+     </div>	
+          <p class="text" >
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The BioFolD Unit is currently hosted at 
+    the <a href="http://www.fabit.unibo.it/">Department of Pharmacy and Biotechnology (FaBiT)</a>, University of Bologna, Italy (see below).
+    
 
 
 The research activity of the unit is focused on the analysis of of genetic variants using sequence and structure information of proteins and nucleic acids. The main research topics are the developing of new methods for predicting the impact of non-synonymous variants, comparison and prediction of protein and RNA structure.
@@ -87,34 +106,28 @@ The research activity of the unit is focused on the analysis of of genetic varia
 The final goal of our research activity is the understanding of the relationship between genomic variations and disease using large amount of data derived from high-throughput techniques. 
 We are interested to develop new disease-specific algorithms and new tools for the personal genomics and personalized medicine.
   <br>
-      <br><br>
+  <br>
+  <br>
    <center>
-   <iframe id="unibomap" width="650" height="450" frameborder="no" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+   <iframe id="unibomap" width="80%" height="450" frameborder="no" scrolling="no" marginheight="0" marginwidth="0"></iframe>
    <br/><br>
    <div id="maplegend">
    <a style="cursor: pointer;" onclick="zoomin();" >Zoom In</a>
    -
    <a style="cursor: pointer;" onclick="zoomout();" >Zoom Out</a>
    </div>
-   </center>
-      
-    </p>
+
+    </center>   
     <br>
-   <!-- Start bottom -->
-   <div id="bottom" class="footer">
-   </div>
-   <!-- End bottom -->
+    <br>
+    <div class='footer-ok'><div>
+
+      </div>
+    </div> <!-- /container -->
 
 
-
-   <div id="content"><img class="bottom" src="./pages/img/bottom.png" alt="Computational Molecular Biology Unit -
-   University of Bologna" align="center" /></div>
-
-
-
-   <!-- End footer -->
-   </div>
-   <!-- End Main -->
-   </div>
-   <br><br>
-   </body></html>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug
+    <script src="pages/assets/js/ie10-viewport-bug-workaround.js"></script>
+    -->
+  </body>
+</html>

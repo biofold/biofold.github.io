@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+<title>Mut2Dis Project @ Structural Bioinformatics Unit</title>
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="Keywords" content=" Marie-Curie, 
+International Outgoing Fellowship">
+<meta name="Author" content="Emidio Capriotti">
+<meta name="Generator" content="">
+
+<link rel="stylesheet" href="../../pages/style.css" 
+type="text/css" title="Mut2Dis Project - Marie Curie IOF">
+
+</head>
+   
+   
+   <body>
+   <!-- Start main -->
+   <div id="main">
+   <br><br><br>
+    <!-- Start header -->
+    <div id="content"><img class="header" src="img/strubio.png" 
+    alt="BioFolD - Biomolecules, Folding and Disease" align="center" /><br />
+      <br />
+    </div>
+   
+    
+    <!-- End header -->
+
+    <!-- Start menu -->
+    <div id="menu">
+          <table class="navig">
+          <tbody><tr>
+           <td class="blank"></td>
+           <td class="cell"><a href="index.html">Home</a></td>
+           <td class="cell"><a href="../../pages/research.html">Research</a></td>
+           <td class="cell"><a href="../../pages/people.html">People</a></td>
+           <td class="cell"><a href="../../pages/resources.html">Resources</a></td>
+           <td class="cell"><a href="../../pages/papers.html">Publications</a></td>
+           <td class="cell"><a href="../../courses/">Training</a></td>
+           <td class="blank"></td></tr>
+        </tbody></table>
+    </div>
+    <!-- End menu -->
+   
+   
+   
+    <!-- Start content -->
+    <div id="content">
+     
+<p class="txtzone">
+    <span class="titletext">	
+    Marie-Curie International Outgoing Fellowship
+    </span><br>
+    <br>
+    <table class="paper" border=0>
+        <tbody><tr><td valign=top>
+    <tr><td valign=top width="22%"><b>Project Acronym:</b></td>
+    <td valign=top>
+    Mut2Dis</td></tr>
+    <tr><td valign=top><b>Project Code:</b></td><td valign=top>
+    PIOF-GA-2009-237225</td></tr>
+    <tr><td valign=top><b>Project Title:</b></td><td valign=top>
+    New methods to evaluate the    
+    impact of single point protein mutation on human health.</td></tr>
+    </tbody>
+    </table>
+    </p>
+<p class="txtzone">
+    In the 2009 the Marie-Curie IOF project Mut2Dis 
+    has been granted by the European Union with ~217K Euro for three years 
+    to develop new machine learning  approaches based on protein structure
+    information to predict the impact of single amino acid polymorphisms.
+    The research proposal presented by Dr. Jairo Rocha (University of Balearic 
+    Islands), Dr Russ B. Altman (Stanford University) and Dr Emidio Capriotti
+    has two main phases:
+    <table class="paper" border=0>
+        <tbody><tr><td valign=top>
+    <ul> 
+    <li>Outgoing Phase at the Stanford University (24 months) - 
+    <a href="mut2dis-pr1.html">Periodic Report 1</a>
+    <li>Returning Phase at the University of Balearic Islands (12 months) - 
+    <a href="mut2dis-pr2.html">Periodic Report 2</a>
+    </ul>
+    </td></tr>
+    </tbody>
+    </table>
+    </p>
+    <p>
+    <table border=0>
+    <tbody>
+    <tr>
+    <td width="27%" align="right">
+    <img src="img/fp7.gif" height="40" align="top">&nbsp; 
+    
+    </td>
+	<td><span class="textsmall"> European Union. Marie Curie Action. 2009-2012 [IOF-237225]
+		   New methods to evaluate the impact of single point protein
+		   mutation on human health.</span>
+	</td>
+	<td width="27%" align="left">
+    <img src="img/mc.jpeg" height="40" align="top">
+    </td>
+	</tr>
+	<tbody>
+	</table>
+	<br>
+
+
+</p>
+   
+    
+    <!-- Start bottom -->
+    <div id="bottom" class="footer">
+     <br>
+    </div>
+    <!-- End bottom -->
+ 
+    
+    
+    <div id="content"><img class="bottom" src="../../pages/img/bottom.png" alt="BioFolD"
+                align="center" /></div>
+   
+    
+    
+    <!-- End footer -->
+  </div>
+    <!-- End Main -->
+  </div>
+  <br><br>
+</body></html>

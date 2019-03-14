@@ -1,22 +1,38 @@
-   <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-   <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
-   <title>BioFolD - Biomolecules, Folding and Disease</title>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="BioFolD - Folding">
+    <meta name="author" content="BioFolD - Emidio Capriotti">
+    <link rel="icon" href="/favicon.ico">
 
-   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-   <meta name="Keywords" content=" 
-   stability, folding, disease, mutation, Structure,
-   SARA, SARA-Coffee, WebRASP, machine learning, 
-   Emidio Capriotti, Bioinformatics, RNA, Proteins,
-   University, Alabama, Birmingham, BioFolD">
-   <meta name="Author" content="Emidio Capriotti">
-   <meta name="Generator" content="">
+    <title>BioFolD - Folding</title>
+    <link rel="stylesheet" href="maps/style.css" type="text/css" />
+    <link rel="stylesheet" href="maps/mapstyle.css" type="text/css" />
 
-   <link rel="stylesheet" href="../pages/style.css" 
-   type="text/css" title="BioFolD - Biomolecules, Folding and Disease">
-   <link rel="stylesheet" href="maps/mapstyle.css" type="text/css" />
-   </head>
-   
-    <script type="text/javascript">
+    <!-- Bootstrap core CSS -->
+    <link href="../pages/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug 
+    <link href="pages/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    -->
+
+    <!-- Custom styles for this template -->
+    <link href="../pages/style/jumbotron-narrow-biofold.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]
+    <script src="pages/assets/js/ie-emulation-modes-warning.js"></script>
+    -->
+
+	   
+  </head>
+  
+     
+   <script type="text/javascript">
     var today = new Date();
     var year_now = today.getFullYear();
     var month_now = today.getMonth();
@@ -110,7 +126,7 @@
             "Google Map")
             
         var mbass = new OpenLayers.Icon("maps/img/bass.png", new OpenLayers.Size(13,13));
-        var sbass = new OpenLayers.Layer.GeoRSS( 'HHU', "maps/georss/hhu.xml", {'icon': mbass});
+        var sbass = new OpenLayers.Layer.GeoRSS( 'unibo', "maps/georss/unibo.xml", {'icon': mbass});
 		
 		var folding = addServer('folding',month,year,'yellow');
 		var imutant = addServer('imutant',month,year,'orange');
@@ -144,7 +160,7 @@
 		map.addLayer(nkfold);
 	
 		var mbass = new OpenLayers.Icon("maps/img/bass.png", new OpenLayers.Size(13,13));
-		var sbass = new OpenLayers.Layer.GeoRSS( 'HHU', "maps/georss/hhu.xml", {'icon': mbass});
+		var sbass = new OpenLayers.Layer.GeoRSS( 'unibo', "maps/georss/unibo.xml", {'icon': mbass});
 		map.addLayer(sbass);
 
     	map.refresh();
@@ -167,7 +183,7 @@
     function show_layer(servername)
     	{
     	var i;
-    	var ntool = {"Folding\@BioFolD": 1, "I-Mutant": 2, "K-Fold": 3, "HHU": 4 };
+    	var ntool = {"Folding\@BioFolD": 1, "I-Mutant": 2, "K-Fold": 3, "unibo": 4 };
     	var numserver = ntool[servername];
    		for (i = 1; i <= 3; i++)
     	{
@@ -196,49 +212,60 @@
     	}
     
    </script>
-   
-   
-   
-   
-   <body onload="get_now();">
-   <!-- Start main -->
-   <div id="main">
-   <br><br><br>
-    <!-- Start header -->
-    <div id="content"><img class="header" src="../pages/img/strubio.png" 
-    alt="BioFolD - Biomolecules, Folding and Disease" align="center" /><br />
-      <br />
-    </div>
-   
-    
-    <!-- End header -->
 
-    <!-- Start menu -->
-    <div id="menu">
-          <table class="navig">
-          <tbody><tr>
-           <td class="blank"></td>
-           <td class="cell"><a href="index.html">Home</a></td>
-           <td class="cell"><a href="../pages/research.html">Research</a></td>
-           <td class="cell"><a href="../pages/people.html">People</a></td>
-           <td class="cell"><a href="../pages/resources.html">Resources</a></td>
-           <td class="cell"><a href="../pages/papers.html">Publications</a></td>
-           <td class="cell"><a href="../courses/">Training</a></td>
-           <td class="blank"></td></tr>
-        </tbody></table>
-    </div>
-    <!-- End menu -->
+  <body onload="get_now();">
+    <br>
+    <div id="main">
+    <div class="container">
 
-    <!-- Start content -->
-    <div id="content">
-     
-   <p class="txtzone">
+      <div class="jumbotron">
+        <table width="100%">
+        <tr>
+        <td width="90%">
+        <div class='biofold' ><span style="color:#c31e27;">Bio</span><span style="color:#4689a3;">molecules</span> <span style="color:#c31e27;">Fol</span><span style="color:#4689a3;">ding and </span><span style="color:#c31e27;">D</span><span style="color:#4689a3;">isease</span></div><br>
+	</td>
+	<td width="10%">
+	<div class="right_cell">
+        <a href="http://biofold.org">
+        <img src="../pages/img/logo.png" width="75px" align="left">
+        </a>
+        </div>
+	</td>
+	</tr>
+	</table>
+
+	<table width="100%">
+        <tr>
+        <td>
+        <div class="form-inline justify-content-center">
+        <nav>
+          <ul class="nav nav-pills">
+            <li role="presentation" ><a href="../index.html">Home</a></li>
+            <li role="presentation"><a href="../research.html">Research</a></li>
+            <li role="presentation" ><a href="../people.html">People</a></li>
+            <li role="presentation" class='active'><a href="../resources.html">Resources</a></li>
+            <li role="presentation"><a href="../papers.html">Publications</a></li>
+            <li role="presentation"><a href="../training.html">Training</a></li>
+          </ul>
+        </nav>
+        </div>
+        </td>
+        </tr>
+        </table>
+    <br>
+  	<br>
+
+     <div class="text">
+     <h4 class="title" >Folding - BioFolD</h4>
+     </div>
+  <p class="text">
 	
-   <br />
-   In this page are reported information about the projects related to the study of the protein folding.  
+  In this page are reported information about the projects related to the study of the protein folding.  
    Currently we have two web tools located in our server and one located in a server of the  
    <a href="http://www.biocomp.unibo.it/" target=_blank>University of Bologna</a>.
    <br /><br />
+   </p>
+     <div class="text">
      <table class="paper">
      <tbody>
      <tr><td valign="top" width=130>
@@ -251,7 +278,7 @@
      <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/15262782">
      <img src="../pages/img/pubmed.gif"></a>
      <a href="../pages/documents/papers/ISMB04.pdf">
-     <img src="../pages/img/pdf.gif"></a>
+     <img width="14" src="../pages/img/pdf.gif"></a>
      </td></tr>
      <tr><td valign="top" width=130> 
      <a target=blank 
@@ -263,7 +290,7 @@
      <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/15980478">
      <img src="../pages/img/pubmed.gif"></a>
      <a href="../pages/documents/papers/nar05.pdf">
-     <img src="../pages/img/pdf.gif"></a>
+     <img width="14" src="../pages/img/pdf.gif"></a>
      </td></tr>
      <tr><td valign="top" width=130>
      <a target=blank 
@@ -275,11 +302,12 @@
      <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/17138584">
      <img src="../pages/img/pubmed.gif"></a>
      <a href="../pages/documents/papers/KFold_Bioinfo07.pdf">
-     <img src="../pages/img/pdf.gif"></a>
+     <img width="14" src="../pages/img/pdf.gif"></a>
      </td></tr>  
      </tbody></table>
-
-     <p class="txtzone">
+     </div>
+     <br>
+     <p class="text">
      The implementation of these web servers has been made partially supported
      by funds from the BioSapiens Network of Excellence (LSHG-CT-2003-503265) 
      delivered to Rita Casadio. 
@@ -319,22 +347,19 @@
      </div>
 
      
-     </p>
-     <br>
-     </p>
-    
-    <!-- Start bottom -->
-    <div id="bottom" class="footer">
-    </div>
-    <!-- End bottom -->
- 
-    <div id="content"><img class="bottom" src="../pages/img/bottom.png" 
-    alt="BioFolD - Biomolecules, Folding and Disease" align="center" /></div>
-    <!-- End footer -->
-  </div>
-    <!-- End Main -->
-   <br>
-   <br>
-  </div>
-</body></html>
-   
+     </p>	
+
+
+       <br>
+    <br>
+    <div class='footer-ok'><div>
+
+      </div>
+    </div> <!-- /container -->
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug
+    <script src="pages/assets/js/ie10-viewport-bug-workaround.js"></script>
+    -->
+  </body>
+</html>
