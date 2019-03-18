@@ -134,7 +134,7 @@
 		var drcancer = addServer('drcancer',month,year,'blu');
 		var metasnp = addServer('metasnp',month,year,'green');
 		var contrastrank = addServer('contrastrank',month,year,'pink');
-                var phdsnpg = addServer('phdsnpg',month,year,'white');
+		var phdsnpg = addServer('phdsnpg',month,year,'white');
 
     	map.addLayers([satellite,snps,phdsnp,snpsgo,drcancer,metasnp,contrastrank,phdsnpg,sbass]); 
 
@@ -178,7 +178,7 @@
 		map.layers[1].destroy();
                 var nphdsnpg = addServer('phdsnpg',month,year,'white');
                 map.addLayer(nphdsnpg);
-	
+
 		var mbass = new OpenLayers.Icon("maps/img/bass.png", new OpenLayers.Size(13,13));
 		var sbass = new OpenLayers.Layer.GeoRSS( 'unibo', "maps/georss/unibo.xml", {'icon': mbass});
 		map.addLayer(sbass);
@@ -203,9 +203,9 @@
     function show_layer(servername)
     	{
     	var i;
-    	var ntool = {"SNPs\@BioFolD": 1, "SNPs\&GO": 3, "PhD\-SNP": 2, "DrCancer": 4, "unibo": 7, "Meta\-SNP": 5, "ContrastRank": 6 , "PhD\-SNPg": 7 };
+    	var ntool = {"SNPs\@BioFolD": 1, "SNPs\&GO": 3, "PhD\-SNP": 2, "DrCancer": 4, "unibo": 8, "Meta\-SNP": 5, "ContrastRank": 6 , "PhD\-SNPg": 7 };
     	var numserver = ntool[servername];
-   		for (i = 1; i <= 8; i++)
+   		for (i = 1; i <= 7; i++)
     	{
     	if (i != numserver)
     	{
@@ -223,7 +223,7 @@
     function show_alllayer()
     	{
     	var i;
-   		for (i = 1; i <= 8; i++)
+   		for (i = 1; i <= 7; i++)
     	{
     		map.layers[i].setVisibility(true);
     	}   	
@@ -301,7 +301,7 @@
      <a target=blank
      href="http://snps.biofold.org/phd-snpg">
      <b>PhD-SNP<sup>g</sup></b></a></td>
-     <td valign="top">Machine learning method for predicting pathogenic variants     in coding and non-coding regions.
+     <td valign="top">Machine learning method for predicting pathogenic variants in coding and non-coding regions.
      <br>
      <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/">
      <img src="http://biofold.org/pages/img/pubmed.gif"></a>
