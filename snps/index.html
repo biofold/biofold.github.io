@@ -55,8 +55,8 @@
     }
     function writeTools()
     {
-    var Tools=["ALL","SNPs&GO","PhD-SNP","DrCancer","Meta-SNP","SNPs","ContrastRank","PhD-SNPg"];
-    for (optionCounter = 0; optionCounter <= 7; optionCounter++)
+    var Tools=["ALL","SNPs&GO","PhD-SNP","DrCancer","Meta-SNP","SNPs","ContrastRank","PhD-SNPg","Fido-SNP"];
+    for (optionCounter = 0; optionCounter <= 8; optionCounter++)
     {
     document.write('<OPTION value=' + Tools[optionCounter] + '>' + Tools[optionCounter]);
     }
@@ -93,7 +93,7 @@
         
     function addServer(name,month,year,mcolor)
         {
-        var htool = {"snps": "SNPs\@BioFolD", "snpsgo": "SNPs\&GO", "phdsnp": "PhD\-SNP", "metasnp": "Meta-SNP", "drcancer": "DrCancer","phdsnpg": "PhD\-SNPg", "contrastrank": "ContrastRank"  };
+        var htool = {"snps": "SNPs\@BioFolD", "snpsgo": "SNPs\&GO", "phdsnp": "PhD\-SNP", "metasnp": "Meta-SNP", "drcancer": "DrCancer","phdsnpg": "PhD\-SNPg", "contrastrank": "ContrastRank", "fidosnp": "Fido\-SNP"  };
         if (htool[name] === undefined )
         {
         	var geoname="Other";
@@ -135,8 +135,9 @@
 		var metasnp = addServer('metasnp',month,year,'green');
 		var contrastrank = addServer('contrastrank',month,year,'pink');
 		var phdsnpg = addServer('phdsnpg',month,year,'white');
+		var fidosnp = addServer('fidosnp',month,year,'brown');
 
-    	map.addLayers([satellite,snps,phdsnp,snpsgo,drcancer,metasnp,contrastrank,phdsnpg,sbass]); 
+    	map.addLayers([satellite,snps,phdsnp,snpsgo,drcancer,metasnp,contrastrank,phdsnpg,fidosnp,sbass]); 
 
 
 		map.setCenter(new OpenLayers.LonLat(0,0), 1);
@@ -179,6 +180,10 @@
                 var nphdsnpg = addServer('phdsnpg',month,year,'white');
                 map.addLayer(nphdsnpg);
 
+		map.layers[1].destroy();
+		var nfidosnp = addServer('fidosnp',month,year,'brown');
+		map.addLayer(nfidosnp);
+   
 		var mbass = new OpenLayers.Icon("maps/img/bass.png", new OpenLayers.Size(13,13));
 		var sbass = new OpenLayers.Layer.GeoRSS( 'unibo', "maps/georss/unibo.xml", {'icon': mbass});
 		map.addLayer(sbass);
@@ -203,9 +208,9 @@
     function show_layer(servername)
     	{
     	var i;
-    	var ntool = {"SNPs\@BioFolD": 1, "SNPs\&GO": 3, "PhD\-SNP": 2, "DrCancer": 4, "unibo": 8, "Meta\-SNP": 5, "ContrastRank": 6 , "PhD\-SNPg": 7 };
+    	var ntool = {"SNPs\@BioFolD": 1, "SNPs\&GO": 3, "PhD\-SNP": 2, "DrCancer": 4, "unibo": 9, "Meta\-SNP": 5, "ContrastRank": 6 , "PhD\-SNPg": 7, "Fido\-SNP": 8 };
     	var numserver = ntool[servername];
-   		for (i = 1; i <= 7; i++)
+   		for (i = 1; i <= 8; i++)
     	{
     	if (i != numserver)
     	{
@@ -223,7 +228,7 @@
     function show_alllayer()
     	{
     	var i;
-   		for (i = 1; i <= 7; i++)
+   		for (i = 1; i <= 8; i++)
     	{
     		map.layers[i].setVisibility(true);
     	}   	
@@ -288,15 +293,63 @@
      <div class="text">
      <table class="paper">
      <tbody>
+     <tr><td valign="top" width=130>     <a target=blank
+     href="http://snps.biofold.org/contrastrank/index.html">
+     <b>ContastRank</b></a></td>
+     <td valign="top">Statistical method for the classification of cancer samples using exome
+     sequencing data.
+     <br>
+     <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/25161249">
+     <img src="../pages/img/pubmed.gif"></a>
+     <a href="../pages/documents/papers/Tian_Bioinformatics2014.pdf">
+     <img width="14" src="../pages/img/pdf.gif"></a>
+     </td></tr>
+     <tr><td valign="top" width=130>     <a target=blank
+     href="http://snps.biofold.org/drcancer/index.html">
+     <b>DrCancer</b></a></td>
+     <td valign="top">Support Vector Machine based method to predict
+     cancer-causing mutations (Beta version).
+     <br>
+     <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/21992054">
+     <img src="../pages/img/pubmed.gif"></a>
+     <a href="../pages/documents/papers/Capriotti_Genomics2011.pdf">
+     <img width="14" src="../pages/img/pdf.gif"></a>
+     </td></tr>
+
+     <tr><td valign="top" width=130>
+     <a target=blank href="http://snps.biofold.org/fido-snp">
+     <b>Fido-SNP</b></a></td>
+     <td valign="top">Machine learning method for predicting the impact of SNVs in the dog genome.
+     <br>
+     <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/">
+     <img src="../pages/img/pubmed.gif"></a>
+     <a href="../pages/documents/papers/gkz420.pdf">
+     <img width="14" src="../pages/img/pdf.gif"></a>
+     </td></tr>
+
+     <tr><td valign="top" width=130>
+     <a target=blank href="http://snps.biofold.org/meta-snp">
+     <b>Meta-SNP</b></a></td>
+     <td valign="top">Meta-predictor of disease causing variants that uses
+     the output of PANTHER, PhD-SNP, SIFT and SNAP
+     <br>
+     <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/23819846">
+     <img src="../pages/img/pubmed.gif"></a>
+     <a href="../pages/documents/papers/Capriotti_MetaSNP_BMCGenomics13.pdf">
+     <img width="14" src="../pages/img/pdf.gif"></a>
+     </td></tr>
+
      <tr><td valign="top" width=130>
      <a target=blank      href="http://snps.biofold.org/phd-snp">
-     <b>PhD-SNP</b></a></td>     <td valign="top">Support Vector Machine based method to discriminate between neutral     or disease-related single point protein mutations.
+     <b>PhD-SNP</b></a></td>     <td valign="top">Support Vector Machine based method to discriminate between neutral
+     or disease-related single point protein mutations.
      <br>
      <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/16895930">
      <img src="../pages/img/pubmed.gif"></a>
      <a href="../pages/documents/papers/BioinfDis06.pdf">
      <img width="14" src="../pages/img/pdf.gif"></a>     
      </td></tr>
+
      <tr><td valign="top" width=130>
      <a target=blank
      href="http://snps.biofold.org/phd-snpg">
@@ -308,17 +361,7 @@
      <a href="documents/papers/phdsnpg-web-2017.pdf">
      <img width="15" src="http://biofold.org/pages/img/pdf.gif"></a>
      </td></tr>
-     <tr><td valign="top" width=130>     
-     <a target=blank href="http://snps.biofold.org/meta-snp">
-     <b>Meta-SNP</b></a></td>     
-     <td valign="top">Meta-predictor of disease causing variants that uses 
-     the output of PANTHER, PhD-SNP, SIFT and SNAP
-     <br>     
-     <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/">
-     <img src="../pages/img/pubmed.gif"></a>
-     <a href="../pages/documents/papers/Capriotti_MetaSNP_BMCGenomics13.pdf">
-     <img width="14" src="../pages/img/pdf.gif"></a>
-     </td></tr> 
+     
      <tr><td valign="top" width=130>     
      <a target=blank href="http://snps.biofold.org/snps-and-go">
      <b>WS-SNPs&GO</b></a></td>
@@ -334,28 +377,6 @@
      <a href="../pages/documents/papers/Capriotti_AIMM_BMCBioinformatics2011.pdf">
      <img width="14" src="../pages/img/pdf.gif"></a>
      </td></tr>
-     <tr><td valign="top" width=130>     <a target=blank 
-     href="http://snps.biofold.org/drcancer/index.html">
-     <b>DrCancer</b></a></td>
-     <td valign="top">Support Vector Machine based method to predict 
-     cancer-causing mutations (Beta version).
-     <br>
-     <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/21992054">
-     <img src="../pages/img/pubmed.gif"></a>
-     <a href="../pages/documents/papers/Capriotti_Genomics2011.pdf">
-     <img width="14" src="../pages/img/pdf.gif"></a>
-     </td></tr>    
-     <tr><td valign="top" width=130>     <a target=blank
-     href="http://snps.biofold.org/contrastrank/index.html">
-     <b>ContastRank</b></a></td>
-     <td valign="top">Statistical method for the classification of cancer samples using exome
-     sequencing data.
-     <br>
-     <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/25161249">
-     <img src="../pages/img/pubmed.gif"></a>
-     <a href="../pages/documents/papers/Tian_Bioinformatics2014.pdf">
-     <img width="14" src="../pages/img/pdf.gif"></a>
-     </td></tr> 
      </tbody></table>
      <br>
      <p class="text">
@@ -404,6 +425,8 @@
      <a style="cursor: pointer;" onclick='show_layer("ContrastRank");' >ContrastRank</a> &nbsp;
      <img src="maps/img/white-ball.png" width="11" height="11"  >
      <a style="cursor: pointer;" onclick='show_layer("PhD\-SNPg");' >PhD-SNPg</a> &nbsp;
+     <img src="maps/img/brown-ball.png" width="11" height="11"  >
+     <a style="cursor: pointer;" onclick='show_layer("Fido\-SNP");' >Fido-SNPg</a> &nbsp;
      </div>
 
      
