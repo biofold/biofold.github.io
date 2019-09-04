@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="BioFolD - Emidio Capriotti">
+    <meta name="author" content="BioFolD - Emidio Capriotti">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Work Packages CeProVI - PRIN 2017</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../pages/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug 
+    <link href="../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    -->
+
+    <!-- Custom styles for this template -->
+    <link href="../../pages/style/jumbotron-narrow-biofold.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]
+    <script src="../assets/js/ie-emulation-modes-warning.js"></script>
+    -->
+    <script language="javascript" type="text/javascript" src="../tag/swfobject.js"></script>
+    
+
+	   
+  </head>
+
+  <body>
+    <br>
+    <div class="container">
+
+      <div class="jumbotron">
+        <table width="100%">
+        <tr>
+        <td width="90%">
+        <div class='biofold' ><span style="color:#c31e27;">Bio</span><span style="color:#4689a3;">molecules</span> <span style="color:#c31e27;">Fol</span><span style="color:#4689a3;">ding and </span><span style="color:#c31e27;">D</span><span style="color:#4689a3;">isease</span></div><br>
+	</td>
+	<td width="10%">
+	<div class="right_cell">
+        <a href="http://biofold.org">
+        <img src="../../pages/img/logo.png" width="75px" align="left">
+        </a>
+        </div>
+	</td>
+	</tr>
+	</table>
+
+	<table width="100%">
+        <tr>
+        <td>
+        <div class="form-inline justify-content-center">
+        <nav>
+          <ul class="nav nav-pills">
+            <li role="presentation" ><a href="./index.html">Home</a></li>
+            <li role="presentation" class='active'><a href="./wps.html">WPs</a></li>
+            <li role="presentation"><a href="./units.html">Units</a></li>
+          </ul>
+        </nav>
+        </div>
+        </td>
+        </tr>
+        </table>
+    <br>
+  	<br>
+  	
+     <div class="text">
+     <h4 class="title" >Work Packages</h4>
+     </div>
+
+  <div class="text">     
+
+    <table class="paper" border=0>
+        <tbody><tr><td valign=top>
+    <tr><td valign=top width="22%"><b>Project Acronym:</b></td>
+    <td valign=top>
+    CeProVI</td></tr>
+    <tr><td valign=top><b>Project Code:</b></td><td valign=top>
+    MIUR-PRIN-201744NR8S</td></tr>
+    <tr><td valign=top><b>Project Title:</b></td><td valign=top>
+    Integrative tools for defining the molecular basis of the diseases:<br> 
+    <b>C</b>omputational and <b>E</b>xperimental methods for 
+    <b>Pro</b>tein  <b>V</b>ariant <b>I</b>nterpretation.
+    </td></tr>
+    </tbody>
+    </table>
+    </p>
+<p class="text">
+    <br>
+    <table class="paper" border=0>
+        <tbody><tr><td valign=top>
+    <h4 class="section" >
+    WP1: Development of an integrated protein variation database (Months 1-36) 
+    </h4>
+    This WP is one of the pillars of our project. All the units will collaborate to the database implementation, starting from public
+    resources, enriching the database with information derived from new experiments and computational annotations. The main
+    aim of WP1 consists of the collection of high quality SAVs data including their impact on protein structure, stability, protein-protein
+    binding affinity and their association to diseases.
+    <u>This will be a significant step forward to the generation of an integrated resource incorporating thermodynamic data and the
+    structural and functional effects of SAVs in a unique framework. This WP includes the development of a semi-automatic
+    tool for extracting experimental data from the literature and update the database</u>. To perform this task we will implement a semiautomatic
+    method based on Natural Language Processing (NLP) techniques. The algorithm will scan each manuscript abstract
+    in PubMed and will return a score related to the probability of finding experimental measures of protein stability in the fulltext
+    version of the paper.
+    We will start by aggregatin g heterogeneous sources of data from publicly available repositories (such as Protein Data Bank
+    (www.wwpdb.org/), ProTherm (www.abren.net/protherm/), SKEMPI (life.bsc.es/pid/mutation_database/), PMD
+    (pmd.ddbj.nig.ac.jp/~pmd/pmd.html), ClinVar (www.ncbi.nlm.nih.gov/clinvar/), SwissVar (swissvar.expasy.org/), OMIM
+    (www.omim.org)) on a common database.
+    As a first step we will filter the ProTherm d atabase by removing all detected imprecisions and mistakes starting from a
+    cleaned list of variants recently released on VariBench (http://structure.bmc.lu.se/PONTstab/).
+    On a second step, we will
+    include new experimental data in a variant set of P53 [30] and Myglobin [31]. Finally, we will aggregate all information from
+    PMD, SKEMPI and ClinVar and SwissVar. During this process, we will generate a preliminary version of the database that will
+    be used for testing the accuracy of a new algorithm for predicting the effect of mutations on protein stability (WP2).
+    Finally we will extend the database with new experimentally derived information by selecting specific proteins with va riants
+    reported in COSMIC and ClinVar databases that satisfy the following criteria: i) the experimental 3D structure is available and
+    deposited in the PDB repository and ii) the proteins and their variants can be expressed in E.coli.
+    The final database will be released as web-based
+    public resource and will be freely accessible.
+    </td></tr>
+    <tr><td valign=top>
+    <br>
+    <h4 class="section" >
+    WP2: Development of the Predictors (Months 5-30)
+    </h4> 
+    We will develop a new computational tool for predicting the impact of protein variants integrating our stateoftheart
+    predictors (PhDSNPg,SNPs&GO, I-Mutant, and INPS). We will set up a specific Information Technology (IT)
+    infrastructure that will host the software and the data for the project. In this phase, UNIT1 and UNIT2 will share the software
+    and they will agree on the datasets to use for software integration and testing.
+    Once the dataset is completed, we will generate non-redundant
+    cross-validation
+    sets, for properly training and testing the new methods. The next most important step is the generation of multiple sequence alignments 
+    of homologues for each protein in our database. The evolutionary data within the multiple sequence alignments can be exploited in various ways
+    towards predicting the variation effect on thermal stability. The Position Specific Substitution Matrix (PSSM) of each protein,
+    obtained from the multiple alignment, is readily useful for the derivation of hidden Markov models. Each multiple alignment
+    can also be used within ConSurf to estimate the relative evolutionary rate of each amino acid position. The PSSM,
+    evolutionary rates and other features will be used to train a machinelearningbased
+    method, and also an ensemble of methods.
+    We will ad dress the problems of predicting the DDG of both single and multiple variations. To cope with the different numbers
+    of possible variations that can concur to the final DDG values, we will use a multiinstance
+    learning approach, using both msiSupport
+    Vector machines, msi-NNs, 1D-convolutional NNs and Recurrent NN.
+    We will also develop a new predictor for the binding affinity changes using the SKEMPI data. We will introduce statistical
+    potentials modulated by evolutionary information, together with new descriptors derived by physics based computational
+    methods (UNIT5). We will test RandomForest, SVM, gradientboosting and bagging of linear regressors. The best method, or
+    an ensemble of all of them, will be our final tool. <u>The main novelty of the new method will consist i n the integration of sources of 
+    information from different variation databases
+    allowing to capture complementary aspects of the relationship between protein stability, function and disease</u>. These results
+    will be obtained by the concerted work of the UNIT1 and UNIT2, that will share the starting software and focus on
+    complementary aspects of the problem.
+    </td></tr>
+    <tr><td valign=top>
+    <br>
+    <h4 class="section" >
+    WP3: Generation of new experimental data: structural, functional and stability (Months 1-32)
+    </h4>
+    This WP focuses on the generation of fundamental experimental information. UNIT3 and UNIT4 will express and biophysically
+    characterize wild type and natural protein variants carrying missense mutations and related to pathological states in humans,
+    with a main focus on the somatic nonsynonymous single nucleotide variants (nsSNVs) observed in cancer cells (UNIT4) and
+    Ca2+-signalling
+    related genetic diseases (UNIT3). Proteins will be heterologously expressed in E. Coli and purified;
+    established experimental techniques will be used to measure changes in stability with respect to the wild type, which include
+    near and far UV circular dichroism (CD) (UNIT 3 and UNIT4), differential scanning calorimetry (UNIT3), fluorescence
+    spectroscopy (UNITS 3 and 4), FTIR (UNIT 4), and Nuclear Magnetic Resonance (1H15N
+    HSQC experiments, UNIT3).
+    UNIT3 will focus mostly on 11 point mutations found in CaM (see Fig 1 panel A) found in genetic diseases where Ca2+
+    signaling is perturbed, namely catecholaminergic polymorphic ventricular tachycardia (CPVT) and long QT syndrome (LQTS),
+    leading to cardiac arrest. It will also characterize some of the 16 CaM SAVs associated to cancer.
+    UNIT4 will focus on SAVs found in cancer tissues of protein kinases MAPK1, 3, 6,8,11and phosphatases PTPN4,11,14 that
+    regulate the balance between protein phosphorylation and dephosphorylation and control a number of biological processes.
+    Perturbation of this balance, as a consequence of alteration of protein kinases or phosphatases structure and/or activity, may
+    result in abnormal cellular processes such as the uncontrolled proliferation and tumorigenesis. UNIT4 will express selected
+    samples of nsSNVs found in pathological tissues and reported in databases (COSMIC, ClinVar, OMIM) and will measure the DG
+    and DDG associated to each variant.
+    The nsSNVs structural properties, the rmal and thermodynamic stability and function will be compared with those of the
+    corresponding wildtype
+    proteins. To obtain insight on changes in the three dimensional structure, as well as local interactions
+    of the mutated side chains, UNIT4 will provide the selected variants to UNIT3 and to UNIT5 that will perform structural
+    analysis by NMR and molecular dynamics, respectively. The structural information will allow to understand how local changes
+    induced by mutations influence the mobility and dynamics of the variant. <u>The main novelty of this study will consist in the
+    collection of experimental protein structure and stability data for sets of variants associated with cancer and genetic defects in
+    calcium signaling</u>.
+    </td></tr>
+    <tr><td valign=top>
+    <br>
+    <h4 class="section" >
+    WP4: Generation of new experimental data of binding affinity variations (Months 5-32)
+    </h4>
+    The effects of nsSNV on the interaction between the affected protein and the biological target will be investigated in this WP
+    to estimate the relative binding affinity (DDG = DGmut-DGwt) and provide useful experimental data for WPs 1, 2 and 5.
+    UNIT 3, with essential contributions from UNITS 4 and 5, will be mainly involved in this WP.
+    As a test system, we will study the interaction of wild type and mutated CaM with peptides fr om the ryanodine receptor 1
+    (RyR1), a CaM target found in skeletal muscle cells, and the myocardiumspecific
+    RyR2 target in order to highlight tissue-specific effects of the observed nsSNVs. Some of the 16 cancer-related
+    somatic missense mutations identified in CALM1
+    coding for CaM, will also be experimentally and computationally analyzed, given priority to those that most
+    likely affect the interface with binding partners (see WP4).
+    Surface Plasmon resonance (SPR), ITC and NMR will be use d to measure DDG values for the proteins and their relative
+    biological targets. In SPR experiments, the protein of interest will be immobilized on a suitable sensor chip by NiNTA specific
+    affinity binding, while the binding partner is flowed onto the chip at different suitable concentrations and based on the
+    binding-induced changes in refractive index of the metal/dielectric interface the kinetic rate of association and dissociation is
+    measured at real time. By measuring the maximal response at specific ligand concentration, the apparent Kd can be
+    assessed, from which DG is directly derived (DG = RTlnKd). Immobilization of both the wild type and the variant protein in
+    different flow cells will allow direct and indirect estimates of DDG values.
+    The impact of the single amino acid substitution on protein dynamics and interactions will be studied by nonequilibrium
+    molecular dynamics (Jarzynski method).
+    The relative affinity will also be detected b y ITC, measuring the binding constants and the binding enthalpy at a fixed
+    temperature. As a link from calcium signaling and genetic diseases and cancer, we will focus on possible interaction of CaM
+    protein with other proteins of the PI3Kapha/Akt pathways which are important in the insurgence and progression of cancer.
+    <u>The major goal of this WP consists in measuring the binding affinity of the wild type and variant proteins involved in the
+    pathogenic processes described in WP3, which have not been yet characterized</u>.
+    </td></tr>
+    <tr><td valign=top>
+    <br>
+    <h4 class="section" >
+    WP5: Data validation and evaluation of the predictors (Months: 25-36)
+    </h4>
+    Association of structural and functional markers to diseases is performed according to a well established knowledge-based
+    strategy. This approach is often combined with physics-based
+    ones with the aim of strengthening the results and possibly
+    building a rationale for the statistical association. This WP aims at integrating the efforts produced in WP2, WP3 and WP4 by
+    testing the developed computational methods on the newly generated data. The discrepancy between computation and
+    experiments will be used to fine-tuning
+    the predictors. During this WP we will check the possibility of generating “ad hoc” protein-based
+    predictors to assess all possible variations at level of single protein. The first major outcome of this WP is the
+    definition of reliability thresholds for the machine-learning
+    predictors that allow us to infer the impact of the variations.
+    The second relevant product of this WP will be the definition of a pipeline that will allow annotation of new variations. Th e
+    pipeline will start by processing the protein sequence and generating comparative and evolutionary information that will be
+    used to evaluate the impact of the variations on protein stability, affinity binding, and relevant local changes also at a
+    quantum mechanical level. <u>In this WP, we will significantly contribute to the collection of an independent dataset for assessing
+    the performance of methods for predicting the impact of variants on protein stability, binding affinity and disease. This
+    dataset will be released for the Critical Assessment of Genome Interpretation (CAGI) experiments, designed to evaluate the
+    quality of blind predictions submitted by several methods and define the limitations of the state of the art tools</u>. 
+    </td></tr>
+    </tbody>
+    </table>
+    </p>
+
+    <p>
+    <table border=0>
+    <tbody>
+    <tr>
+    <td  align=center>
+    <br>
+    <img src="img/logomiur.jpg" height="40" align="top">
+    </td>
+<!--
+	<td><span class="text"> PRIN 2017 []
+		   New methods to evaluate the impact of single point protein
+		   mutation on human health.</span>
+	</td>
+	<td width="27%" align="left">
+    <img src="img/mc.jpeg" height="40" align="top">
+    </td>
+-->
+	</tr>
+	<tbody>
+	</table>
+
+
+</p>
+    
+    <br>
+    <br>
+    <div class='footer-ok'><div>
+
+      </div>
+    </div> <!-- /container -->
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug
+    <script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
+    -->
+  </body>
+</html>
