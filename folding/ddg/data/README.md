@@ -1,4 +1,4 @@
-#DATASETS FOR SCORING DDG PREDICTION METHODS
+# DATASETS FOR SCORING DDG PREDICTION METHODS
 
 
 1) VB1432:    1432 variants from 79 protein structures corresponding to 65 clusters.
