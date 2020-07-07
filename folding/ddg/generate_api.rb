@@ -3,7 +3,7 @@ require 'json'
 require 'cgi'
 
 DATA_FILES = %w(
-    data/ssym-5fold.tsv
+    data/ssym-5fold.csv
 )
 
 BUILD_DIR = 'build/'
