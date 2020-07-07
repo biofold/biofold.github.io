@@ -1,6 +1,5 @@
 # This Rakefile is forked from: https://github.com/edgecase/middleman-gh-pages
 
-
 require "fileutils"
 require "tmpdir"
 
