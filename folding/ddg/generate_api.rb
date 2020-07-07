@@ -3,13 +3,7 @@ require 'json'
 require 'cgi'
 
 DATA_FILES = %w(
-    data/artefacts.csv
-    data/grades.csv
-    data/incantations.csv
-    data/organisation-types.csv
-    data/organisations.csv
-    data/roles.csv
-    data/uncategorised.csv
+    data/ssym-5fold.tsv
 )
 
 BUILD_DIR = 'build/'
