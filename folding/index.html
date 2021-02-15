@@ -120,8 +120,8 @@ if (supportsPassive) {
     }
     function writeTools()
     {
-    var Tools=["ALL","I-Mutant","K-Fold","Folding"];
-    for (optionCounter = 0; optionCounter <= 3; optionCounter++)
+    var Tools=["ALL","I-Mutant","K-Fold","ThermoScan","Folding"];
+    for (optionCounter = 0; optionCounter <= 4; optionCounter++)
     {
     document.write('<OPTION value=' + Tools[optionCounter] + '>' + Tools[optionCounter]);
     }
@@ -158,7 +158,7 @@ if (supportsPassive) {
         
     function addServer(name,month,year,mcolor)
         {
-        var htool = {"folding": "Folding@BioFolD", "imutant": "I-Mutant", "kfold": "K-Fold" };
+        var htool = {"folding": "Folding@BioFolD", "imutant": "I-Mutant", "kfold": "K-Fold", 'thermoscan': "ThermoScan" };
         if (htool[name] === undefined )
         {
         	var geoname="Other";
@@ -196,8 +196,9 @@ if (supportsPassive) {
 		var folding = addServer('folding',month,year,'yellow');
 		var imutant = addServer('imutant',month,year,'orange');
 		var kfold = addServer('kfold',month,year,'blu');
+		var thermoscan = addServer('thermoscan',month,year,'red');
 
-    	map.addLayers([satellite,folding,imutant,kfold,sbass]); 
+    	map.addLayers([satellite,folding,imutant,kfold,thermoscan,sbass]); 
 
 
 		map.setCenter(new OpenLayers.LonLat(0,0), 1);
@@ -223,6 +224,10 @@ if (supportsPassive) {
 		map.layers[1].destroy();
 		var nkfold = addServer('kfold',month,year,'blu');
 		map.addLayer(nkfold);
+
+		map.layers[1].destroy();
+                var nthermoscan = addServer('thermoscan',month,year,'blu');
+                map.addLayer(nthermoscan);
 	
 		var mbass = new OpenLayers.Icon("maps/img/bass.png", new OpenLayers.Size(13,13));
 		var sbass = new OpenLayers.Layer.GeoRSS( 'unibo', "maps/georss/unibo.xml", {'icon': mbass});
@@ -248,9 +253,9 @@ if (supportsPassive) {
     function show_layer(servername)
     	{
     	var i;
-    	var ntool = {"Folding\@BioFolD": 1, "I-Mutant": 2, "K-Fold": 3, "unibo": 4 };
+    	var ntool = {"Folding\@BioFolD": 1, "I-Mutant": 2, "K-Fold": 3, "ThermoScan":4, "unibo": 5 };
     	var numserver = ntool[servername];
-   		for (i = 1; i <= 3; i++)
+   		for (i = 1; i <= 4; i++)
     	{
     	if (i != numserver)
     	{
@@ -268,7 +273,7 @@ if (supportsPassive) {
     function show_alllayer()
     	{
     	var i;
-   		for (i = 2; i <= 3; i++)
+   		for (i = 2; i <= 4; i++)
     	{
     		map.layers[i].setVisibility(true);
     	}   	
@@ -368,7 +373,19 @@ if (supportsPassive) {
      <img src="../pages/img/pubmed.gif"></a>
      <a href="../pages/documents/papers/KFold_Bioinfo07.pdf">
      <img width="14" src="../pages/img/pdf.gif"></a>
-     </td></tr>  
+     </td></tr> 
+     <tr><td valign="top" width=130>
+     <a target=blank
+     href="https://folding.biofold.org/thermoscan">
+     <b>ThermoScan</b></a></td>
+     <td valign="top"> A semi-automatic method for retrieving protein thermodynamic data from literature.
+     <br>
+     <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/">
+     <img src="../pages/img/pubmed.gif"></a>
+     <a href="../pages/documents/papers/">
+     <img width="14" src="../pages/img/pdf.gif"></a>
+     </td></tr>
+
      </tbody></table>
      </div>
      <br>
@@ -409,6 +426,8 @@ if (supportsPassive) {
      <a style="cursor: pointer;" onclick='show_layer("I-Mutant");' >I-Mutant</a> &nbsp;
      <img src="maps/img/blu-ball.png" width="11" height="11"  >
           <a style="cursor: pointer;" onclick='show_layer("K-Fold");' >K-Fold</a> &nbsp;
+     <img src="maps/img/red-ball.png" width="11" height="11"  >
+          <a style="cursor: pointer;" onclick='show_layer("ThermoScan");' >ThermoScan</a> &nbsp;
      </div>
 
      
