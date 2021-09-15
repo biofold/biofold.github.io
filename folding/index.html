@@ -120,7 +120,7 @@ if (supportsPassive) {
     }
     function writeTools()
     {
-    var Tools=["ALL","I-Mutant","K-Fold","ThermoScan","Folding"];
+    var Tools=["ALL","I-Mutant","K-Fold","ThermoScan","T-Pro","Folding"];
     for (optionCounter = 0; optionCounter <= 4; optionCounter++)
     {
     document.write('<OPTION value=' + Tools[optionCounter] + '>' + Tools[optionCounter]);
@@ -158,7 +158,7 @@ if (supportsPassive) {
         
     function addServer(name,month,year,mcolor)
         {
-        var htool = {"folding": "Folding@BioFolD", "imutant": "I-Mutant", "kfold": "K-Fold", 'thermoscan': "ThermoScan" };
+        var htool = {"folding": "Folding@BioFolD", "imutant": "I-Mutant", "kfold": "K-Fold", 'thermoscan': "ThermoScan", 'tpro': 'T-Pro'};
         if (htool[name] === undefined )
         {
         	var geoname="Other";
@@ -197,8 +197,9 @@ if (supportsPassive) {
 		var imutant = addServer('imutant',month,year,'orange');
 		var kfold = addServer('kfold',month,year,'blu');
 		var thermoscan = addServer('thermoscan',month,year,'red');
+		var tpro = addServer('tpro',month,year,'green');
 
-    	map.addLayers([satellite,folding,imutant,kfold,thermoscan,sbass]); 
+    	map.addLayers([satellite,folding,imutant,kfold,thermoscan,tpro,sbass]); 
 
 
 		map.setCenter(new OpenLayers.LonLat(0,0), 1);
@@ -228,6 +229,10 @@ if (supportsPassive) {
 		map.layers[1].destroy();
                 var nthermoscan = addServer('thermoscan',month,year,'red');
                 map.addLayer(nthermoscan);
+
+		map.layers[1].destroy();
+                var ntpro = addServer('tpro',month,year,'green');
+                map.addLayer(ntpro);
 	
 		var mbass = new OpenLayers.Icon("maps/img/bass.png", new OpenLayers.Size(13,13));
 		var sbass = new OpenLayers.Layer.GeoRSS( 'unibo', "maps/georss/unibo.xml", {'icon': mbass});
@@ -253,9 +258,9 @@ if (supportsPassive) {
     function show_layer(servername)
     	{
     	var i;
-    	var ntool = {"Folding\@BioFolD": 1, "I-Mutant": 2, "K-Fold": 3, "ThermoScan":4, "unibo": 5 };
+    	var ntool = {"Folding\@BioFolD": 1, "I-Mutant": 2, "K-Fold": 3, "ThermoScan":4, "T-Pro": 5, "unibo": 6 };
     	var numserver = ntool[servername];
-   		for (i = 1; i <= 4; i++)
+   		for (i = 1; i <= 5; i++)
     	{
     	if (i != numserver)
     	{
@@ -273,7 +278,7 @@ if (supportsPassive) {
     function show_alllayer()
     	{
     	var i;
-   		for (i = 2; i <= 4; i++)
+   		for (i = 2; i <= 5; i++)
     	{
     		map.layers[i].setVisibility(true);
     	}   	
@@ -425,9 +430,11 @@ if (supportsPassive) {
      <img src="maps/img/orange-ball.png" width="11" height="11"  > 
      <a style="cursor: pointer;" onclick='show_layer("I-Mutant");' >I-Mutant</a> &nbsp;
      <img src="maps/img/blu-ball.png" width="11" height="11"  >
-          <a style="cursor: pointer;" onclick='show_layer("K-Fold");' >K-Fold</a> &nbsp;
+     <a style="cursor: pointer;" onclick='show_layer("K-Fold");' >K-Fold</a> &nbsp;
      <img src="maps/img/red-ball.png" width="11" height="11"  >
-          <a style="cursor: pointer;" onclick='show_layer("ThermoScan");' >ThermoScan</a> &nbsp;
+     <a style="cursor: pointer;" onclick='show_layer("ThermoScan");' >ThermoScan</a> &nbsp;
+     <img src="maps/img/green-ball.png" width="11" height="11"  >
+     <a style="cursor: pointer;" onclick='show_layer("T-Pro");' >T-Pro</a> &nbsp; 
      </div>
 
      
