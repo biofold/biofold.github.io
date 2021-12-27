@@ -120,8 +120,8 @@ if (supportsPassive) {
     }
     function writeTools()
     {
-    var Tools=["ALL","I-Mutant","K-Fold","ThermoScan","T-Pro","Folding"];
-    for (optionCounter = 0; optionCounter <= 4; optionCounter++)
+    var Tools=["ALL","I-Mutant","K-Fold","ThermoScan","T-Pro","DDGun","Folding"];
+    for (optionCounter = 0; optionCounter <= 5; optionCounter++)
     {
     document.write('<OPTION value=' + Tools[optionCounter] + '>' + Tools[optionCounter]);
     }
@@ -158,7 +158,7 @@ if (supportsPassive) {
         
     function addServer(name,month,year,mcolor)
         {
-        var htool = {"folding": "Folding@BioFolD", "imutant": "I-Mutant", "kfold": "K-Fold", 'thermoscan': "ThermoScan", 'tpro': 'T-Pro'};
+        var htool = {"folding": "Folding@BioFolD", "imutant": "I-Mutant", "kfold": "K-Fold", 'thermoscan': "ThermoScan", 'tpro': 'T-Pro', 'ddgun':'DDGun'};
         if (htool[name] === undefined )
         {
         	var geoname="Other";
@@ -198,8 +198,9 @@ if (supportsPassive) {
 		var kfold = addServer('kfold',month,year,'blu');
 		var thermoscan = addServer('thermoscan',month,year,'red');
 		var tpro = addServer('tpro',month,year,'green');
+		var ddgun = addServer('ddgun',month,year,'white');
 
-    	map.addLayers([satellite,folding,imutant,kfold,thermoscan,tpro,sbass]); 
+    	map.addLayers([satellite,folding,imutant,kfold,thermoscan,tpro,ddgun,sbass]); 
 
 
 		map.setCenter(new OpenLayers.LonLat(0,0), 1);
@@ -233,6 +234,10 @@ if (supportsPassive) {
 		map.layers[1].destroy();
                 var ntpro = addServer('tpro',month,year,'green');
                 map.addLayer(ntpro);
+
+		map.layers[1].destroy();
+		var nddgun = addServer('ddgun',month,year,'white');
+		map.addLayer(nddgun);
 	
 		var mbass = new OpenLayers.Icon("maps/img/bass.png", new OpenLayers.Size(13,13));
 		var sbass = new OpenLayers.Layer.GeoRSS( 'unibo', "maps/georss/unibo.xml", {'icon': mbass});
@@ -258,9 +263,9 @@ if (supportsPassive) {
     function show_layer(servername)
     	{
     	var i;
-    	var ntool = {"Folding\@BioFolD": 1, "I-Mutant": 2, "K-Fold": 3, "ThermoScan":4, "T-Pro": 5, "unibo": 6 };
+    	var ntool = {"Folding\@BioFolD": 1, "I-Mutant": 2, "K-Fold": 3, "ThermoScan":4, "T-Pro": 5, "DDGun": 6, "unibo": 7 };
     	var numserver = ntool[servername];
-   		for (i = 1; i <= 5; i++)
+   		for (i = 1; i <= 6; i++)
     	{
     	if (i != numserver)
     	{
@@ -278,7 +283,7 @@ if (supportsPassive) {
     function show_alllayer()
     	{
     	var i;
-   		for (i = 2; i <= 5; i++)
+   		for (i = 2; i <= 6; i++)
     	{
     		map.layers[i].setVisibility(true);
     	}   	
@@ -369,7 +374,7 @@ if (supportsPassive) {
      </td></tr>
      <tr><td valign="top" width=130>
      <a target=blank 
-     href="http://gpcr2.biocomp.unibo.it/cgi/predictors/K-Fold/K-Fold.cgi">
+     href="https://folding.biofold.org/k-fold">
      <b>K-Fold</b></a></td>
      <td valign="top">Support Vector Machine based method to predict the mechanism and 
      rate of protein folding kinetic.
@@ -385,9 +390,20 @@ if (supportsPassive) {
      <b>ThermoScan</b></a></td>
      <td valign="top"> A semi-automatic method for retrieving protein thermodynamic data from literature.
      <br>
-     <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/">
+     <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/33842537">
      <img src="../pages/img/pubmed.gif"></a>
-     <a href="../pages/documents/papers/">
+     <a href="../pages/documents/papers/turina_fmbs2021.pdf">
+     <img width="14" src="../pages/img/pdf.gif"></a>
+     </td></tr>
+     <tr><td valign="top" width=130>
+     <a target=blank
+     href="https://folding.biofold.org/ddgun">
+     <b>DDGun</b></a></td>
+     <td valign="top">Untrained predictor of protein stability change upon mutation.
+     <br>
+     <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/31266447">
+     <img src="../pages/img/pubmed.gif"></a>
+     <a href="../pages/documents/papers/Montanucci_et_al-2019-BMC_Bioinformatics.pdf">
      <img width="14" src="../pages/img/pdf.gif"></a>
      </td></tr>
 
@@ -434,7 +450,9 @@ if (supportsPassive) {
      <img src="maps/img/red-ball.png" width="11" height="11"  >
      <a style="cursor: pointer;" onclick='show_layer("ThermoScan");' >ThermoScan</a> &nbsp;
      <img src="maps/img/green-ball.png" width="11" height="11"  >
-     <a style="cursor: pointer;" onclick='show_layer("T-Pro");' >T-Pro</a> &nbsp; 
+     <a style="cursor: pointer;" onclick='show_layer("T-Pro");' >T-Pro</a> &nbsp;
+     <img src="maps/img/white-ball.png" width="11" height="11"  >
+     <a style="cursor: pointer;" onclick='show_layer("DDGun");' >DDGun</a> &nbsp;
      </div>
 
      
