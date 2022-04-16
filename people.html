@@ -13,6 +13,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="pages/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="pages/style/box.css" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug 
     <link href="pages/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
@@ -21,10 +22,50 @@
     <!-- Custom styles for this template -->
     <link href="pages/style/jumbotron-narrow-biofold.css" rel="stylesheet">
 
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="pages/dist/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="pages/dist/js/bootstrap.min.js"></script>
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]
     <script src="pages/assets/js/ie-emulation-modes-warning.js"></script>
     -->
+
+<script type="text/javascript">
+       function readmore() {
+       if ( document.getElementById("collapsible").value != '-' ) 
+         { 
+          document.getElementById("collapsible").value = "-";
+          document.getElementById("collapsible").text = "Read less";
+          document.getElementById("short").style.display = 'none';
+          document.getElementById("long").style.display = 'inline';
+         }
+       else 
+         {
+          document.getElementById("collapsible").value = "+";
+          document.getElementById("collapsible").text = "Read more";
+          document.getElementById("short").style.display = 'inline';
+          document.getElementById("long").style.display = 'none';
+         }
+       }
+
+       function showall() {
+       if ( document.getElementById("collapsible").value != '-' )
+         {
+          document.getElementById("collapsible").value = "-";
+          document.getElementById("collapsible").text = "(show less)"
+          document.getElementById("short-table").style.display = 'none';
+          document.getElementById("full-table").style.display = 'table';
+         }
+       else
+         {
+          document.getElementById("collapsible").value = "+";
+          document.getElementById("collapsible").text = "(show all)"
+          document.getElementById("short-table").style.display = 'table';
+          document.getElementById("full-table").style.display = 'none';
+         }
+       }
+</script>
+
 
 	   
   </head>
@@ -122,35 +163,6 @@
         <img src="pages/img/email.gif">        </a>
      </tr>
      </tr>
-     <!--
-        <tr><td width=100 valign=top>
-        <img width=80 height=80 align=center src="pages/img/boy.svg">
-        </td>
-        <td class='photo' valign=top>
-        <p class="text-small">
-        <b>Tommaso Mosca</b><br>
-        Master Student<br>
-        LM in Bioinformatics.<br>
-        <a href="mailto:tommaso.mosca@studio.unibo.it">
-        <img src="pages/img/email.gif">        </a>
-     </tr>
-
-     <tr><td width=100 valign=top>
-        <img width=80 height=80 align=center src="pages/img/riccardo.png">
-        </td>
-        <td class='photo' valign=top>
-        <p class="text-small">
-
-        <b>Riccardo Ottalevi</b><br>
-        Master Student<br>
-        LM in Bioinformatics.<br>
-        <a href="mailto:riccardo.ottalevi@studio.unibo.it">
-        <img src="pages/img/email.gif">        </a>
-	<a target=blank href="http://oronzotassiello.github.io">
-	<img src="pages/img/home.gif">        </a>        
-	</td>
-     </tr>
-     -->
      </tbody>
      </table>
      </p>
@@ -161,10 +173,73 @@
      <h4 class="section">Alumni</h4>
      </div>
      <p class='text'>
-     The following researchers were members of the BioFolD unit at the UAB and UNIBO:  
+     The last members of the BioFolD unit at the UAB and UNIBO
+     <a id='collapsible' value='-' onclick='showall();'>(show all)</a>
      <br>
      <br>
-     <table border=0 cellpadding="7" cellspacing="7" class="paper">
+
+     <table id='short-table' border=0 cellpadding="7" cellspacing="7" class="paper" style="display:table">
+     <tbody>
+        <tr><td width=70 valign=top>
+        <img width=60 height=60 align=center src="pages/img/boy.svg">
+        </td>
+        <td class='photo' valign=top>
+        <p class="text-small">
+        <b>Tommaso Mosca</b><br>
+        Master Student<br>
+        Feb. 2022 - Master in Bioinformatics. University of Bologna.<br>
+        <a href="mailto:tommaso.mosca@studio.unibo.it">
+        <img src="pages/img/email.gif">        </a>
+     </tr>
+
+     <tr><td width=70 valign=top>
+        <img width=60 height=60 align=center src="pages/img/riccardo.png">
+        </td>
+        <td class='photo' valign=top>
+        <p class="text-small">
+
+        <b>Riccardo Ottalevi</b><br>
+        Master Student<br>
+        Feb. 2022 - Master in Bioinformatics. University of Bologna.<br>
+        <a href="https://it.linkedin.com/in/riccardo-ottalevi-8aba56191" target=_blank>
+        <img width=12 src="pages/img/linkedin.svg">        </a>
+        </td>
+     </tr>
+        <tr><td width=70 valign=top>
+        <img width=60 height=60 align=center src="pages/img/girl.svg">
+        </td>
+        <td class='photo' valign=top>
+        <p class="text-small">
+        <b>Anna Benedetti</b><br>
+        Internship Feb-Aug 2021<br>
+        Department of Pharmacy and Biotechnology (FaBiT).<br>
+        <a href="mailto:anna.benedetti5@studio.unibo.it">
+        <img src="pages/img/email.gif">        </a>
+     </tr>
+     </tr>
+        <tr><td width=70 valign=top>
+        <img width=60 height=60 align=center src="pages/img/girl.svg">
+        </td>
+        <td class='photo' valign=top>
+        <p class="text-small">
+
+        <b>Lucrezia Valeriani</b><br>
+        Jul. 2020 - Degree in Genomics. University of Bologna.<br>
+        <a href="https://it.linkedin.com/in/lucrezia-valeriani-827909194" target=_blank>
+        <img width=12 src="pages/img/linkedin.svg">        </a>
+        <a href="mailto:lucrezia.valeriani@studio.unibo.it">
+        <!--
+        <a target=blank href="http://oronzotassiello.github.io">
+        <img src="pages/img/home.gif">        </a>
+        -->
+        </td>
+     </tr> 
+     </tbody>
+     </table>
+     
+
+
+     <table id='full-table' border=0 cellpadding="7" cellspacing="7" class="paper" style="display:none">
      <tbody>
         <tr><td width=70 valign=top>
         <img width=60 height=60 align=center src="pages/img/boy.svg">
@@ -298,6 +373,13 @@
      </tr>
      </tbody>
      </table>
+     <!--
+     <p class='text'>
+     &nbsp;<a id='collapsible' value='-' onclick='showall();'>show all</a>
+     </p>
+     -->
+
+
      </p>
      <br>
      <br>
@@ -341,6 +423,9 @@
 </p>  
     <br>
     <br>
+
+
+
     <div class='footer-ok'><div>
 
       </div>

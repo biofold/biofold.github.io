@@ -11,3 +11,18 @@
     cursor:pointer;    font-family: Courier, monospace;
 /*Trasperenza cross browser*/    opacity: .7; filter: alpha(opacity=70);
 -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+
+
+
+button.btn.collapsed:before
+{
+    content:'+' ;
+    display:block;
+    width:15px;
+}
+button.btn:before
+{
+    content:'-' ;
+    display:block;
+    width:15px;
+}
