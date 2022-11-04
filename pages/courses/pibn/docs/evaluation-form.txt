@@ -14,10 +14,10 @@ Course Evaluation Form
 12)  Overall are you satisfied of the development of the course?
 13)  Were all the lectures given by the teacher?
 14)  Are the classrooms suitable for the course?
-14a) Are the virtual classrooms suitable for the course?
-15)  Is the timetable of the course compatible with the studying activities?
-16)  Are the equipment and the lab suitable for the course?
-17)  Does the teacher provide appropriate information to complete this evaluation form?
+15) Are the virtual classrooms suitable for the course?
+16)  Is the timetable of the course compatible with the studying activities?
+17)  Are the equipment and the lab suitable for the course?
+18)  Does the teacher provide appropriate information to complete this evaluation form?
 
 Possible answers: from 1 (No) to 4 (Yes). For questions 8 and 16 "Not Applicable" can be chosen.
 
