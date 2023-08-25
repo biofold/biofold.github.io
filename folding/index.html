@@ -120,7 +120,7 @@ if (supportsPassive) {
     }
     function writeTools()
     {
-    var Tools=["ALL","I-Mutant","K-Fold","ThermoScan","T-Pro","DDGun","Folding"];
+    var Tools=["ALL","I-Mutant","K-Fold","ThermoScan","K-Pro","DDGun","Folding"];
     for (optionCounter = 0; optionCounter <= 5; optionCounter++)
     {
     document.write('<OPTION value=' + Tools[optionCounter] + '>' + Tools[optionCounter]);
@@ -158,7 +158,7 @@ if (supportsPassive) {
         
     function addServer(name,month,year,mcolor)
         {
-        var htool = {"folding": "Folding@BioFolD", "imutant": "I-Mutant", "kfold": "K-Fold", 'thermoscan': "ThermoScan", 'tpro': 'T-Pro', 'ddgun':'DDGun'};
+        var htool = {"folding": "Folding@BioFolD", "imutant": "I-Mutant", "kfold": "K-Fold", 'thermoscan': "ThermoScan", 'kpro': 'K-Pro', 'ddgun':'DDGun'};
         if (htool[name] === undefined )
         {
         	var geoname="Other";
@@ -197,10 +197,10 @@ if (supportsPassive) {
 		var imutant = addServer('imutant',month,year,'orange');
 		var kfold = addServer('kfold',month,year,'blu');
 		var thermoscan = addServer('thermoscan',month,year,'red');
-		var tpro = addServer('tpro',month,year,'green');
+		var kpro = addServer('kpro',month,year,'green');
 		var ddgun = addServer('ddgun',month,year,'white');
 
-    	map.addLayers([satellite,folding,imutant,kfold,thermoscan,tpro,ddgun,sbass]); 
+    	map.addLayers([satellite,folding,imutant,kfold,thermoscan,kpro,ddgun,sbass]); 
 
 
 		map.setCenter(new OpenLayers.LonLat(0,0), 1);
@@ -232,8 +232,8 @@ if (supportsPassive) {
                 map.addLayer(nthermoscan);
 
 		map.layers[1].destroy();
-                var ntpro = addServer('tpro',month,year,'green');
-                map.addLayer(ntpro);
+                var nkpro = addServer('kpro',month,year,'green');
+                map.addLayer(nkpro);
 
 		map.layers[1].destroy();
 		var nddgun = addServer('ddgun',month,year,'white');
@@ -263,7 +263,7 @@ if (supportsPassive) {
     function show_layer(servername)
     	{
     	var i;
-    	var ntool = {"Folding\@BioFolD": 1, "I-Mutant": 2, "K-Fold": 3, "ThermoScan":4, "T-Pro": 5, "DDGun": 6, "unibo": 7 };
+    	var ntool = {"Folding\@BioFolD": 1, "I-Mutant": 2, "K-Fold": 3, "ThermoScan":4, "K-Pro": 5, "DDGun": 6, "unibo": 7 };
     	var numserver = ntool[servername];
    		for (i = 1; i <= 6; i++)
     	{
@@ -386,6 +386,17 @@ if (supportsPassive) {
      </td></tr> 
      <tr><td valign="top" width=130>
      <a target=blank
+     href="http://folding.biofold.org/k-pro">
+     <p class="text"><b>K-Pro</b></a></td>
+     <td valign="top"><p class="text">Database of kinetics data on proteins and mutants.
+     <br>
+     <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/">
+     <img src="../pages/img/pubmed.gif"></a>
+     <a href="../pages/documents/papers/turina_jmb2023.pdf">
+     <img width="15" src="../pages/img/pdf.gif"></a>
+     </td></tr>
+     <tr><td valign="top" width=130>
+     <a target=blank
      href="https://folding.biofold.org/thermoscan">
      <b>ThermoScan</b></a></td>
      <td valign="top"> A semi-automatic method for retrieving protein thermodynamic data from literature.
@@ -451,7 +462,7 @@ if (supportsPassive) {
      <img src="maps/img/red-ball.png" width="11" height="11"  >
      <a style="cursor: pointer;" onclick='show_layer("ThermoScan");' >ThermoScan</a> &nbsp;
      <img src="maps/img/green-ball.png" width="11" height="11"  >
-     <a style="cursor: pointer;" onclick='show_layer("T-Pro");' >T-Pro</a> &nbsp;
+     <a style="cursor: pointer;" onclick='show_layer("K-Pro");' >K-Pro</a> &nbsp;
      <img src="maps/img/white-ball.png" width="11" height="11"  >
      <a style="cursor: pointer;" onclick='show_layer("DDGun");' >DDGun</a> &nbsp;
      </div>
