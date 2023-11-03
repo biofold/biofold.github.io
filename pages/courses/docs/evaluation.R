@@ -27,7 +27,7 @@ axis(side = 2, at=seq(1,4,1), las=1)
 
 box()
 mids <- bp[, 1]
-print (vector)
+iprint (vector)
 print (std)
 for (i in 1:n){
 arrows(x0 = mids[i], y0 = vector[i] - std[i], x1 = mids[i], y1 = vector[i] + std[i], code = 3, angle = 90, length=0.05)
