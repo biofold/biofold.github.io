@@ -131,7 +131,7 @@ if (supportsPassive) {
     }
     }
 </script>
-<script defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAlKuK_9CqcaM0izyTY1nigUJAKSjvW_KI&callback=Function.prototype'></script>
+<script defer async src='https://maps.google.com/maps/api/js?key=AIzaSyAlKuK_9CqcaM0izyTY1nigUJAKSjvW_KI&v=3'></script>
     <script src="maps/OpenLayers.js">
     </script>
     
@@ -196,7 +196,7 @@ if (supportsPassive) {
             
         var mbass = new OpenLayers.Icon("maps/img/bass.png", new OpenLayers.Size(13,13));
         var sbass = new OpenLayers.Layer.GeoRSS( 'unibo', "maps/georss/unibo.xml", {'icon': mbass});
-		
+			
 		var snps = addServer('snps',month,year,'yellow');
 		var phdsnp = addServer('phdsnp',month,year,'orange');
 		var snpsgo = addServer('snpsgo',month,year,'red');
@@ -205,11 +205,8 @@ if (supportsPassive) {
 		var contrastrank = addServer('contrastrank',month,year,'pink');
 		var phdsnpg = addServer('phdsnpg',month,year,'white');
 		var fidosnp = addServer('fidosnp',month,year,'brown');
-
     	map.addLayers([satellite,snps,phdsnp,snpsgo,drcancer,metasnp,contrastrank,phdsnpg,fidosnp,sbass]); 
-
-
-		map.setCenter(new OpenLayers.LonLat(0,0), 1);
+	map.setCenter(new OpenLayers.LonLat(0,0), 1);
     	map.addControl( new OpenLayers.Control.LayerSwitcher() );
 		}
 	
