@@ -112,6 +112,11 @@ a {
         font-size:10px !important;
 }
 
+.text-smallst {
+        text-align:left;
+        font-size:8px !important;
+}
+
 .text-justify {
         text-align:justify;
         font-size:10px !important;
@@ -130,6 +135,13 @@ p.text-small {
         padding: 0px;
         text-align:left;
         font-size:14px !important;
+}
+
+p.text-smallest {
+        margin: 0px;
+        padding: 0px;
+        text-align:left;
+        font-size:12px !important;
 }
 
 p.text-justify {

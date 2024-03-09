@@ -47,6 +47,56 @@
           document.getElementById("long").style.display = 'none';
          }
        }
+       
+
+       let thesis = {short_lorenzo: "Development of machine learning methods for predicting the impact of protein mutants ...",
+		     title_lorenzo: "Development of machine learning methods for predicting the impact of protein mutants on the stability of protein complexes and their implication on the insurgence of human disorders.",
+		     abs_lorenzo : 'Protein-protein interactions are crucial in most cell biological activities and functions. To study protein-protein interactions and their three-dimensional information, we can use protein complexes. Protein complex stability refers to the propensity of a protein complex, which consists of two or more proteins bound together, to remain intact and functional under various conditions. This stability is fundamental for the proper execution of biological functions since protein complexes are involved in nearly all cellular processes. Amino acid mutations can change the protein complex stability. However, experimental studies on protein complexes are time consuming and have many technical limitations. Therefore, we developed machine learning models to predict the variation of protein complex stability (ΔΔG) upon amino acid mutations. The SKEMPI dataset contains 4952 single point mutations with the ΔΔG. The mutation can have a stabilizing or destabilizing effect on the protein complex and the location of the mutation has a role in determining its effect. The relative solvent accessibility is the proportion of the residue exposed to the solvent and has a correlation with the ΔΔG. We used MODELLER to construct a model of the mutated protein structure and we extracted different features to train our models. The features are: the amino acid mutation, the local environment of the mutated amino acid and the relative solvent accessibility of the amino acid. We trained different machine learning models using a 10-fold cross-validation: Linear Regression, Gradient Boosting Regression, Support Vector Regression and Random Forests. The Random Forests model has slightly better results than the other models.',
+
+		     title_cecilia: "Predicting the effect of mutations on protein-protein interactions.",
+		     abs_cecilia: 'The study of the effect induced by point mutations on protein interactions is essential for a better description of the relationship between genotype and phenotype. In this work we will analyze a set of variants from the IntAct database for which their impact on protein-protein interactions has been recorded. The dataset employed is the IMEx Consortium mutation-specific dataset, which uses a controlled vocabulary to classify the observed effects in: ‘mutation decreasing interaction strength’ (MI:0116), ‘mutation increasing interaction rate’ (MI:1131) or "mutation causing an interaction" (MI:2227). This work aims to define a set of sequence and structural-based features for predicting the effect of the mutation on the interaction. Such features will be used for the development of a machine learning tool for predicting the variation of binding affinity to identify protein variants that can disrupt or directly affect the formation of interacting complexes and consequently lead to disease and drug resistance.',
+
+		     title_tommaso: "Impact of protein modeling on the prediction of protein stability change upon mutation.",
+		     abs_tommaso: "Understanding the impact of non-synonymous (or missense) DNA variations leading to the disruption or the enhancement of the protein function is fundamental for describing the molecular mechanisms of several human diseases. Predicting the effects of single-point mutation on the protein stability constitutes a crucial step towards understanding the relationship between protein structure and function. The effects of non-synonymous variants on the protein stability are quantified in terms of the variation of Gibbs free energy of unfolding (⁠ ΔG⁠ ), and the difference in ⁠ ΔG between the Wild-Type and mutated protein (ΔΔG) is used to indicate whether the mutation decreases (i.e. destabilizing variant) or increases (i.e. stabilizing variant) the protein stability. In this project the focus is going to be put on whether and, if so, to which extent an experimental protein structure can be substituted by a generated model of the structure (from its reverse mutation) in the process of predicting the ΔΔG of a single-point mutation. In order to get the most information from this work, 3 are the ΔΔG predictors that are going to be used: FoldX (a method based on an empirical force field for the prediction of the effect of a single-point mutation through a linear combination of empirical free energy terms), DDGun (untrained method that combines evolutionary information and statistical potentials to predict the ΔΔG) and I-Mutant (an SVM-based methods using radial basis function kernel with 42 features as input, including temperature, pH, plus features encoding for the mutations and for the spatial residue environment).",
+
+		     title_riccardo: "Predicting effect of mutation in protein-protein interactions.",
+		     abs_riccardo: "Understanding the impact of mutations on Protein-Protein Interaction (PPI) is important for different aspects. We may be able to categorize them in stabilizing and destabilizing in order to access some precious informations leading to a better understanding of complex docking and developing new therapeutic solutions and approaches in a large variety of problems like the cause of drug resistance, changes in enzymatic affinity and consequent alteration of metabolic pathway that could lead to the insurgence of a specific disease. We could be able to access some important information regarding the new folding of the structure given the pattern of interactions between the mutation and the surrounding environment. Approaching protein interaction, given the huge amount, and variety, of information that are present world wide, could be challenging. With this work we want to state a methodology that allows us to predict with a good degree of approximation  the complex interaction environment and the changing in free energies that a single point mutation has on the complex folding. Protein–protein interfaces are complex entities and deciphering the details of the interactions between residues based on experimental physical chemistry analysis could be difﬁcult. Statistical potentials have been shown to be successful in structure prediction and with our work we want to extend this approach to protein-protein interactions. The state of art of this work will rely on Statistical Potential on protein interface. So, the main goal will be to give a good implementation of scoring matrices trained on protein contacts at the interface to end up with a prediction of ΔΔG caused by single point mutation in protein structure.",
+
+		    title_lucrezia: "Predicting the functional impact of single nucleotide variants in rare disease associated genes.",
+		    abs_lucrezia: "High throughput sequencing technologies are allowing to identify a large number of genetic variants some of which are related to human disease. Among them rare genetic disorders, are collectively affecting significant percentage of the world's population. In this thesis work I focused on the analysis of single nucleotide variants (SNVs) associated to rare disease. In a first step, I collected a curated dataset of SNVs from UniProt and Clinvar and analyzed the performance of a state-of the-art method (PhD-SNPg) in predicting the functional impact of such variants. In a second step I evaluated the performance of PhD-SNPg on 35 groups of rare disease to optimized the predictions for each disease class. The results show that PhD-SNPg achieve a good performance in the prediction of disease related variants but it is less accurate in the prediction of neutral polymorphisms. Finally, I developed an optimization strategy based on the calibration of the classification threshold to improve the quality of the predictions of PhD-SNPg. On average such strategy resulted in ~2 % increase the performance in terms of Matthews Correlation Coefficient. The result of this work represents a promising starting point toward the development of disease specific machine learning methods for the more accurate identification of disease associated variants.",
+
+                    title_alessandro: "Analysis and characterization of germline and somatic variants in cancer genome.",
+                    abs_alessandro: "Our work initially focused on the analysis of the somatic variants in the COSMIC database. We compared the occurrence of detected SNVs in oncogene and tumor suppressor genes. We also analyzed the impact of the genetic variants at protein level, considering the subset of unique and recurrent somatic variants occurring in coding regions. In the second part of our work, we evaluated the impact of somatic and germline mutations, retrieved from the ICGC and TCGA databases, on cancer in order to determine whether there was a significative difference. We first evaluated the two classes of mutations based on oncogene and tumor suppressor categories, then we used different filters such as population frequency, total or exonic mutations to have a better understanding of the distribution of the different subsets. Finally, we discussed and assessed the analyses: the final results will be used to improve the performance of PhD-SNPg and for its optimization in the prediction of cancer driver variants.",
+
+                    title_emina: "Characterizing the impact of mutations at functional and network levels in Lung Adenocarcinoma.",
+                    abs_emina: "Cancer is complex disorder characterized by high level of mutational rate. Generally speaking, mutations in two basic classes of genes, proto-oncogenes and tumor suppressor genes, are what lead to cancer. Proto-oncogenes encode proteins that function to stimulate cell division, inhibit cell differentiation, and halt cell death. Oncogenes, however, typically exhibit increased production of these proteins, thus leading to increased cell division, decreased cell differentiation, and inhibition of cell death. Tumor suppressor genes represent the opposite side of cell growth control, normally acting to inhibit cell proliferation and tumor development. In the project of my master thesis, we focused on the analysis of the genomes of Lung Adenocarcinoma which is leading cause of cancer death in the world. Lung Adenocarcinoma is a pulmonary disease characterized by the formation of new glands, alveolar ducts and a significant production of mucus. In the project we developed a method for prioritization of cancer genes in order to determine which ones are most frequently mutated in LUAD and which gene pairs are mutually inclusive i.e. exclusive. In this way we can determine different LUAD subtypes based on the pathway that is mutated which can be helpful for designing customized therapies to improve patient outcomes. Using Gene Ontology to perform enrichment analysis on a given gene sets help us determine which GO terms are overrepresented (or underrepresented) using annotations for that gene set. Although our analysis may have some critical points that need to be considered more in deep, the obtained results represents a good starting point for the characterization of the mutational impact on functional and network levels in the genome of Lung Adenocarcinoma.",
+
+                    title_oronzo: "Computational methods for scoring genomes of Lung Adenocarcinoma.",
+                    abs_oronzo: "Cancer is a genetic disease resulting from an uncontrolled division of cells. At a molecular level, the disorder can be promoted by a series of genetic variants occurring in genes involved in important cellular functions such as replication, apoptosis and DNA reparation. Among all the genetic variants, only a small fraction of them are responsible for the insurgence and progression of the disease. For this reason, the early determination of the cancer-causing variants is a hot topic in molecular biology and genomic medicine. During the last few years, the improvements of DNA sequencing technologies allowed to collect a huge amount of genomic data, which are essential for studying the relationship between genotype and phenotype. In particular, national and international consortium such as The Cancer Genome Atlas consortium and the International Cancer Genome Consortium collected the genomic data from thousands cancer samples and their matching normal tissues. In the project of my master thesis, we focused on the analysis of the genomes of Lung Adenocarcinoma. A pulmonary disease characterized by the formation of new glands, alveolar ducts and a significant production of mucus. In this project, we developed a computational approach for scoring the cancer genome, which combines a gene prioritization algorithm and a machine learning method for predicting deleterious single nucleotide variants. The new approach is adopted for analyzing data from the exomes of tumors (Lung Adenocarcinoma) and normal cells. Results are compared with those obtained from the analysis of genomes from healthy individuals made available by the 1000 Genomes Consortium. The project foresees future developments such as the implementation of a mutation/gene-based score which correlates with the survival rates of the patients. The project adds to the development of new computational methods for the diagnosis of lung adenocarcinoma, possibly identifying causative genetic variations.",
+
+                    title_luigi: "Detecting cancer causing genes and variants in Colon Adenocarcinoma.",
+                    abs_luigi: "Cancer is a non-mendelian complex disease for which are known the effects and just few causes. Nowadays, the used theraphy based on surgery, chemiotheraphy and radiotherapy are not enough to contrast the new abnormal grownings. Based on the previous ContrastRunk project, the aim of the thesis is to prioritize the genes that are more likely involved in the Colon Adenocarcinoma. The Cancer Genome Atlas and 1000 Genomes Project consortiums provided the DNA samples coming from health and sick individuals and they are used to extract the rarest Single Nucleotide Variants that lead some genes, like tumor suppressor genes and oncogenes, to acquire selective advantages in the development of the disease, becoming more or lower expressed in the cell. PhDSNPg, a classificator based on the Support Vectors Machines, was used to classify all the mutations in the datasets in benign or pathogenic. The alghoritm recognize a similar behavior among mutated tumor suppressor genes and oncogenes and it classifyies the most of their mutations like pathogenic.",
+
+	}
+       
+       function readinfo(idtext,type) {		
+       if ( document.getElementById("thesis_"+idtext+"_"+type).value != '-' )
+          {
+          document.getElementById("thesis_"+idtext+"_"+type).value = "-";
+          document.getElementById("thesis_"+idtext+"_"+type).text = thesis['title_'+idtext]
+	  document.getElementById("abs_"+idtext+"_"+type).innerHTML = '<br>'+thesis['abs_'+idtext];
+         }
+       else
+         {
+          document.getElementById("thesis_"+idtext+"_"+type).value = "+";
+          document.getElementById("thesis_"+idtext+"_"+type).text = thesis['title_'+idtext];
+	  if ( idtext == "lorenzo" ) {
+		document.getElementById("thesis_"+idtext+"_"+type).text = thesis['short_'+idtext];
+	     }
+	  document.getElementById("abs_"+idtext+"_"+type).innerHTML = '';
+
+         }
+       }
 
        function showall() {
        if ( document.getElementById("collapsible").value != '-' )
@@ -153,7 +203,7 @@
         <td class='photo' valign=top>
         <p class="text-small">
         <b>Chiara Rivi</b><br>
-        Master Student<br>
+        Master Student, University of Bologna.<br>
         LM in Bioinformatics.<br>
         <a href="mailto:chiara.rivi@studio.unibo.it">
         <img src="pages/img/email.gif">        </a>
@@ -192,61 +242,81 @@
 
      <table id='short-table' border=0 cellpadding="7" cellspacing="7" class="paper" style="display:table">
      <tbody>
-        <tr><td width=70 valign=top>
-        <img width=60 height=60 align=center src="pages/img/lorenzo.png">
+        <tr><td width=100 valign=top>
+        <img width=80 height=80 align=center src="pages/img/lorenzo.png">
         </td>
         <td class='photo' valign=top>
-        <p class="text-small">
+        <p class="text-small" style="display:inline;">
         <b>Lorenzo Lo Cascio</b><br>
-        Feb. 2024, Master in Bioinformatics. University of Bologna.<br>
+        Feb. 2024: Master in Bioinformatics. University of Bologna.<br>
+	<a id='thesis_lorenzo_short' value='-' onclick='readinfo("lorenzo","short");'>
+	Development of machine learning methods for predicting the impact of protein mutants ...</a>:
+        <p id="abs_lorenzo_short" class="text-small" style="display:inline;"> 
+	</p>
+	</br>
         <a href="mailto:lorenzo.locascio2@studio.unibo.it">
         <img src="pages/img/email.gif">        </a>
         </tr>
 
-        <tr><td width=70 valign=top>
-        <img width=60 height=60 align=center src="pages/img/andrea.png">
+        <tr><td width=100 valign=top>
+        <img width=80 height=80 align=center src="pages/img/andrea.png">
         </td>
         <td class='photo' valign=top>
         <p class="text-small">
         <b>Andrea Cicconardi</b><br>
         Research Assistant, Department of Pharmacy and Biotechnology (FaBiT).<br>
+	Topics: <i>Impact of mutations on protein stability.</i><br>
         <a href="mailto:andrea.cicconardi@studio.unibo.it">
         <img src="pages/img/email.gif">        </a>
         </td>
         </tr>
 
-        <tr><td width=70 valign=top>
-        <img width=60 height=60 align=center src="pages/img/cecilia.jpg">
+        <tr><td width=100 valign=top>
+        <img width=80 height=80 align=center src="pages/img/cecilia.jpg">
         </td>
         <td class='photo' valign=top>
-        <p class="text-small">
+        <p class="text-small" style="display:inline;">
         <b>Cecilia Foglini</b><br>
-        Sep. 2022, Master in Bioinformatics. University of Bologna.<br>
+        Sep. 2022: Master in Bioinformatics. University of Bologna.<br>
+        <a id='thesis_cecilia_short' value='-' onclick='readinfo("cecilia","short");'>
+        Predicting the effect of mutations on protein-protein interactions.</a>:
+        <p id="abs_cecilia_short" class="text-small" style="display:inline;">
+        </p>
+        </br>
         <a href="mailto:cecilia.foglini2@unibo.it">
         <img src="pages/img/email.gif">        </a>
         <a target=blank href="https://www.unibo.it/sitoweb/cecilia.foglini2">
         <img src="pages/img/home.gif">        </a>
         </tr>
 
-        <tr><td width=70 valign=top>
-        <img width=60 height=60 align=center src="pages/img/boy.svg">
+        <tr><td width=100 valign=top>
+        <img width=80 height=80 align=center src="pages/img/boy.svg">
         </td>
         <td class='photo' valign=top>
-        <p class="text-small">
-        <b>Tommaso Mosca</b><br>
-        Feb. 2022, Master in Bioinformatics. University of Bologna.<br>
+	<p class="text-small" style="display:inline;">
+	<b>Tommaso Mosca</b><br>
+        Feb. 2022: Master in Bioinformatics. University of Bologna.<br>
+        <a id='thesis_tommaso_short' value='-' onclick='readinfo("tommaso","short");'>
+	Impact of protein modeling on the prediction of protein stability change upon mutation.
+        <p id="abs_tommaso_short" class="text-small" style="display:inline;">
+        </p>
+        </br>
         <a href="mailto:tommaso.mosca@studio.unibo.it">
         <img src="pages/img/email.gif">        </a>
      </tr>
 
-     <tr><td width=70 valign=top>
-        <img width=60 height=60 align=center src="pages/img/riccardo.png">
+     <tr><td width=100 valign=top>
+        <img width=80 height=80 align=center src="pages/img/riccardo.png">
         </td>
         <td class='photo' valign=top>
-        <p class="text-small">
-
+	<p class="text-small" style="display:inline;">
         <b>Riccardo Ottalevi</b><br>
-        Feb. 2022, Master in Bioinformatics. University of Bologna.<br>
+        Feb. 2022: Master in Bioinformatics. University of Bologna.<br>
+        <a id='thesis_riccardo_short' value='-' onclick='readinfo("riccardo","short");'>
+	Predicting the effect of mutation in protein-protein interactions.
+        <p id="abs_riccardo_short" class="text-small" style="display:inline;">
+        </p>
+        </br>        
         <a href="https://it.linkedin.com/in/riccardo-ottalevi-8aba56191" target=_blank>
         <img width=12 src="pages/img/linkedin.svg">        </a>
         </td>
@@ -258,100 +328,127 @@
 
      <table id='full-table' border=0 cellpadding="7" cellspacing="7" class="paper" style="display:none">
      <tbody>
-	<tr><td width=70 valign=top>
-        <img width=60 height=60 align=center src="pages/img/lorenzo.png">
+	<tr><td width=100 valign=top>
+        <img width=80 height=80 align=center src="pages/img/lorenzo.png">
         </td>
         <td class='photo' valign=top>
-        <p class="text-small">
+	<p class="text-small" style="display:inline;">
         <b>Lorenzo Lo Cascio</b><br>
-        Feb. 2024, Master in Bioinformatics. University of Bologna.<br>
+        Feb. 2024: Master in Bioinformatics. University of Bologna.<br>
+        <a id='thesis_lorenzo_long' value='-' onclick='readinfo("lorenzo","long");'>
+        Development of machine learning methods for predicting the impact of protein mutants ...</a>:
+        <p id="abs_lorenzo_long" class="text-small" style="display:inline;">
+        </p>
+        </br>
         <a href="mailto:lorenzo.locascio2@studio.unibo.it">
         <img src="pages/img/email.gif">        </a>
         </tr>
 
-        <tr><td width=70 valign=top>
-        <img width=60 height=60 align=center src="pages/img/andrea.png">
+        <tr><td width=100 valign=top>
+        <img width=80 height=80 align=center src="pages/img/andrea.png">
         </td>
         <td class='photo' valign=top>
         <p class="text-small">
         <b>Andrea Cicconardi</b><br>
         Research Assistant, Department of Pharmacy and Biotechnology (FaBiT).<br>
+	Topics: <i>Impact of mutations on protein stability.</i><br>
         <a href="mailto:andrea.cicconardi@studio.unibo.it">
         <img src="pages/img/email.gif">        </a>
         </td>
         </tr>
 
-        <tr><td width=70 valign=top>
-        <img width=60 height=60 align=center src="pages/img/cecilia.jpg">
+        <tr><td width=100 valign=top>
+        <img width=80 height=80 align=center src="pages/img/cecilia.jpg">
         </td>
         <td class='photo' valign=top>
-        <p class="text-small">
+	<p class="text-small" style="display:inline;">
         <b>Cecilia Foglini</b><br>
-        Sep. 2022, Master in Bioinformatics. University of Bologna.<br>
+        Sep. 2022: Master in Bioinformatics. University of Bologna.<br>
+        <a id='thesis_cecilia_long' value='-' onclick='readinfo("cecilia","long");'>
+        Predicting the effect of mutations on protein-protein interactions.</a>:
+        <p id="abs_cecilia_long" class="text-small" style="display:inline;">
+        </p>
+        </br>
         <a href="mailto:cecilia.foglini2@unibo.it">
         <img src="pages/img/email.gif">        </a>
         <a target=blank href="https://www.unibo.it/sitoweb/cecilia.foglini2">
         <img src="pages/img/home.gif">        </a>
         </tr>
 
-        <tr><td width=70 valign=top>
-        <img width=60 height=60 align=center src="pages/img/boy.svg">
+        <tr><td width=100 valign=top>
+        <img width=80 height=80 align=center src="pages/img/boy.svg">
         </td>
         <td class='photo' valign=top>
-        <p class="text-small">
+	<p class="text-small" style="display:inline;">
         <b>Tommaso Mosca</b><br>
-	Feb. 2022, Master in Bioinformatics. University of Bologna.<br>
+        Feb. 2022: Master in Bioinformatics. University of Bologna.<br>
+        <a id='thesis_tommaso_long' value='-' onclick='readinfo("tommaso","long");'>
+        Impact of protein modeling on the prediction of protein stability change upon mutation.
+        <p id="abs_tommaso_long" class="text-small" style="display:inline;">
+        </p>
+        </br>
         <a href="mailto:tommaso.mosca@studio.unibo.it">
         <img src="pages/img/email.gif">        </a>
      </tr>
 
-     <tr><td width=70 valign=top>
-        <img width=60 height=60 align=center src="pages/img/riccardo.png">
+     <tr><td width=100 valign=top>
+        <img width=80 height=80 align=center src="pages/img/riccardo.png">
         </td>
         <td class='photo' valign=top>
-        <p class="text-small">
-
+	<p class="text-small" style="display:inline;">
         <b>Riccardo Ottalevi</b><br>
-        Feb. 2022, Master in Bioinformatics. University of Bologna.<br>
+        Feb. 2022: Master in Bioinformatics. University of Bologna.<br>
+        <a id='thesis_riccardo_long' value='-' onclick='readinfo("riccardo","long");'>
+        Predicting effect of mutation in protein-protein interactions.
+        <p id="abs_riccardo_long" class="text-small" style="display:inline;">
+        </p>
+        </br>
         <a href="https://it.linkedin.com/in/riccardo-ottalevi-8aba56191" target=_blank>
         <img width=12 src="pages/img/linkedin.svg">        </a>
         </td>
      </tr>
-        <tr><td width=70 valign=top>
-        <img width=60 height=60 align=center src="pages/img/girl.svg">
+        <tr><td width=100 valign=top>
+        <img width=80 height=80 align=center src="pages/img/girl.svg">
         </td>
         <td class='photo' valign=top>
         <p class="text-small">
         <b>Anna Benedetti</b><br>
-        Internship Feb-Aug 2021 - Degree in Genomics. University of Bologna.<br>
+        Internship Aug 2021: Degree in Genomics. University of Bologna.<br>
+	Topics: <i>Characterization of pharmacogenomic variants in cytochromes.</i><br>
         <a href="mailto:anna.benedetti5@studio.unibo.it">
         <img src="pages/img/email.gif">        </a>
      </tr>
-	<tr><td width=70 valign=top>
-        <img width=60 height=60 align=center src="pages/img/lucrezia.png">
+	<tr><td width=100 valign=top>
+        <img width=80 height=80 align=center src="pages/img/lucrezia.png">
         </td>
         <td class='photo' valign=top>
-        <p class="text-small">
-
+	<p class="text-small" style="display:inline;">
         <b>Lucrezia Valeriani</b><br>
-	Jul. 2020 - Degree in Genomics. University of Bologna.<br>
+	Jul. 2020: Degree in Genomics. University of Bologna.<br>
+        <a id='thesis_lucrezia_long' value='-' onclick='readinfo("lucrezia","long");'>
+	Predicting the functional impact of single nucleotide variants
+        in rare disease associated genes.
+        <p id="abs_lucrezia_long" class="text-small" style="display:inline;">
+        </p>
+        </br>
 	<a href="https://it.linkedin.com/in/lucrezia-valeriani-827909194" target=_blank>
         <img width=12 src="pages/img/linkedin.svg">        </a>
         <a href="mailto:lucrezia.valeriani@studio.unibo.it">
-        <!--
-        <a target=blank href="http://oronzotassiello.github.io">
-        <img src="pages/img/home.gif">        </a>
-        -->
+	<img src="pages/img/email.gif">        </a>
         </td>
      </tr>
-        <tr><td width=70 valign=top>
-        <img width=60 height=60 align=center src="pages/img/avinceti.png">
+        <tr><td width=100 valign=top>
+        <img width=80 height=80 align=center src="pages/img/avinceti.png">
         </td>
         <td class='photo' valign=top>
-        <p class="text-small">
-
-        <b>Alessandro Vinceti</b><br>
-        Sep. 2019, Master in Bioinformatics. University of Bologna.<br>
+	<p class="text-small" style="display:inline;">
+	<b>Alessandro Vinceti</b><br>
+	Sep. 2019: Master in Bioinformatics. University of Bologna.<br>
+        <a id='thesis_alessandro_long' value='-' onclick='readinfo("alessandro","long");'>
+	Analysis and characterization of germline and somatic variants in cancer genome.
+        <p id="abs_alessandro_long" class="text-small" style="display:inline;">
+        </p>
+        </br>
         <a href="https://it.linkedin.com/in/alessandro-vinceti-639839179" target=_blank>
         <img width=12 src="pages/img/linkedin.svg">        </a>
         <!--
@@ -362,25 +459,35 @@
         <img width=12 src="pages/img/gscholar.png">        </a>
         </td>
      </tr>
-	<tr><td width=70 valign=top>
-        <img width=60 height=60 align=center src="pages/img/emerdan.png">
+	<tr><td width=100 valign=top>
+        <img width=80 height=80 align=center src="pages/img/emerdan.png">
         </td>
         <td class='photo' valign=top>
-        <p class="text-small">
-
+	<p class="text-small" style="display:inline;">
         <b>Emina Merdan</b><br>
-        Sep. 2018, Master in Bioinformatics. University of Bologna.<br>
+        Sep. 2018: Master in Bioinformatics. University of Bologna.<br>
+        <a id='thesis_emina_long' value='-' onclick='readinfo("emina","long");'>
+	Characterizing the impact of mutations at functional and network
+        levels in Lung Adenocarcinoma.        
+        <p id="abs_emina_long" class="text-small" style="display:inline;">
+        </p>
+        </br>
 	<a href="https://de.linkedin.com/in/eminamerdan" target=_blank>
         <img width=12 src="pages/img/linkedin.svg">        </a>
         </td>
      </tr>
-	<tr><td width=70 valign=top>
-        <img width=60 height=60 align=center src="pages/img/otassiello.png">
+	<tr><td width=100 valign=top>
+        <img width=80 height=80 align=center src="pages/img/otassiello.png">
         </td>
-        <td class='photo' valign=top>
-        <p class="text-small">
-        <b>Oronzo Tassiello</b><br>
-        Mar. 2018, Master in Bioinformatics, University of Bologna.<br>
+	<td class='photo' valign=top>
+	<p class="text-small" style="display:inline;">
+	<b>Oronzo Tassiello</b><br>
+        Mar. 2018: Master in Bioinformatics. University of Bologna.<br>
+        <a id='thesis_oronzo_long' value='-' onclick='readinfo("oronzo","long");'>
+	Computational methods for scoring genomes of Lung Adenocarcinoma.
+        <p id="abs_oronzo_long" class="text-small" style="display:inline;">
+        </p>
+	</br>
 	<a href="https://it.linkedin.com/in/oronzo-tassiello-a8994047" target=_blank>
         <img width=12 src="pages/img/linkedin.svg">        </a>
         <!--
@@ -389,13 +496,18 @@
         -->
         </td>
      </tr>
-	<tr><td width=70 valign=top>
-        <img width=60 height=60 align=center src="pages/img/lchiricosta.png">
+	<tr><td width=100 valign=top>
+        <img width=80 height=80 align=center src="pages/img/lchiricosta.png">
         </td>
         <td class='photo' valign=top>
-        <p class="text-small">
+	<p class="text-small" style="display:inline;">
         <b>Luigi Chiricosta</b><br>
-        Sep. 2017, Master in Bioinformatics, University of Bologna.<br>
+        Sep. 2017: Master in Bioinformatics. University of Bologna.<br>
+        <a id='thesis_luigi_long' value='-' onclick='readinfo("luigi","long");'>
+	Detecting cancer causing genes and variants in Colon Adenocarcinoma.
+        <p id="abs_luigi_long" class="text-small" style="display:inline;">
+        </p>
+	</br>
 	<a href="https://it.linkedin.com/in/luigi-chiricosta-844073151" target=_blank>
         <img width=12 src="pages/img/linkedin.svg">        </a>
         <a target=blank href="http://luigichiricosta.github.io">
@@ -403,24 +515,26 @@
         <a target=blank href="https://scholar.google.com/citations?user=2Es8NGoAAAAJ&hl=it">
         <img width=12 src="pages/img/gscholar.png">        </a>        </td>
      </tr>
-        <tr><td width=70 valign=top>
-        <img width=60 height=60 align=center src="pages/img/rui.png">
+        <tr><td width=100 valign=top>
+        <img width=80 height=80 align=center src="pages/img/rui.png">
         </td>
         <td class='photo' valign=top>
         <p class="text-small">
         <b>Rui Tian</b><br>
         Postdoc, Department of Pathology at the University of Alabama at Birmingham.<br>
+	Topics: <i>Computational methdos for the analysis and interpretation of the cancer genome.</i><br>
 	<a href="https://www.linkedin.com/in/rui-x-tian-ph-d-b5014b41" target=_blank>
         <img width=12 src="pages/img/linkedin.svg">        </a>
         </td>
      </tr>
-     <tr><td width=70 valign=top>
-        <img width=60 height=60 align=center src="pages/img/shivani.png">
+     <tr><td width=100 valign=top>
+        <img width=80 height=80 align=center src="pages/img/shivani.png">
         </td>
         <td class='photo' valign=top>
         <b>Shivani Viradia</b><br>
         <p class="text-small">
         MS Student, Biotechnology Program at the University of Alabama at Birmingham.<br>
+	Topics: <i>Analysys of the impact of mutations on protein stability.</i><br>
         <a href="https://www.linkedin.com/in/shivani-viradia" target=_blank>
         <img width=12 src="pages/img/linkedin.svg">        </a>
         </td>
