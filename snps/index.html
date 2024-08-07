@@ -96,7 +96,7 @@ if (supportsPassive) {
 }
 
 </script>
-
+<link rel="stylesheet" href="maps/leaflet.css" />
 	   
   </head>
   
@@ -131,15 +131,99 @@ if (supportsPassive) {
     }
     }
 </script>
-<script src='https://maps.google.com/maps/api/js?key=AIzaSyAlKuK_9CqcaM0izyTY1nigUJAKSjvW_KI&v=3&callback=Function.prototype'></script>
-    <script src="maps/OpenLayers.js">
-    </script>
+  <script src="maps/leaflet.js"></script>
+
     
     
     <script type="text/javascript">
-    var map;
-        
-        
+
+      var map;
+      var layerGroups = [];
+
+      function initializeMap() {
+            if (map) {
+                map.remove();
+            }
+            map = L.map('map', { attributionControl: false, zoomControl: false }).setView([0, 0], 1);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+            }).addTo(map);
+
+                var customControl = L.Control.extend({
+                onAdd: function() {
+                    var container = L.DomUtil.create('div', 'leaflet-control leaflet-bar');
+
+                    // Create zoom in button
+                    var zoomInButton = L.DomUtil.create('a', 'leaflet-control-zoom-in', container);
+                    zoomInButton.innerHTML = '+';
+                    zoomInButton.href = '#';
+                    zoomInButton.onclick = function(e) {
+                        e.preventDefault();
+                        map.zoomIn();
+                    };
+
+                    // Create reset button
+                    var resetButton = L.DomUtil.create('a', 'reset-button', container);
+                    resetButton.innerHTML = 'Reset';
+                    resetButton.href = '#';
+                    resetButton.onclick = function(e) {
+                        e.preventDefault();
+                        map.setView([0, 0], 1); // Reset to initial coordinates and zoom level
+                    };
+
+                    // Create zoom out button
+                    var zoomOutButton = L.DomUtil.create('a', 'leaflet-control-zoom-out', container);
+                    zoomOutButton.innerHTML = '-';
+                    zoomOutButton.href = '#';
+                    zoomOutButton.onclick = function(e) {
+                        e.preventDefault();
+                        map.zoomOut();
+                    };
+
+                    return container;
+                },
+                onRemove: function(map) {
+                    // Nothing to do here
+                }
+            });
+
+            // Add the custom control to the map
+            map.addControl(new customControl({ position: 'topleft' }));
+        }
+
+
+      function clearLayerGroups() {
+            layerGroups.forEach(layerGroup => {
+                layerGroup.clearLayers();
+                map.removeLayer(layerGroup);
+            });
+            layerGroups = [];
+        }
+
+
+      // Function to load coordinates from a JSON file and add them to the specified layer group with the specified icon
+              function loadCoordinates(file, layerGroup, icon) {
+                 fetch(file)
+                .then(response => response.text())
+                .then(data => {
+                    var parser = new DOMParser();
+                    var xmlDoc = parser.parseFromString(data, "application/xml");
+                    var locations = xmlDoc.getElementsByTagName('item');
+                    for (var i = 0; i < locations.length; i++) {
+                        var lat = parseFloat(locations[i].getElementsByTagName('geo:lat')[0].textContent);
+                        var lng = parseFloat(locations[i].getElementsByTagName('geo:long')[0].textContent);
+                        var name = locations[i].getElementsByTagName('description')[0].textContent;
+
+                        // Add a marker for each location with the custom icon
+                        L.marker([lat, lng], { icon: icon })
+                            .addTo(layerGroup)
+                            .bindPopup(name);
+                    }
+                })
+                .catch(error => console.error('Error loading coordinates:', error));
+        }
+
+
     function CheckDate(month,year)
 		{
 		var dmonth = {"": 0, "01": 1,"02": 2,"03": 3,"04": 4,"05": 5,"06": 6,"07": 7,"08":8,"09": 9,"10": 10,"11": 11,"12": 12 };	
@@ -160,7 +244,7 @@ if (supportsPassive) {
 		}    
         
         
-    function addServer(name,month,year,mcolor)
+    function addServer(map,layerGroups,name,month,year,mcolor)
         {
         var htool = {"snps": "SNPs\@BioFolD", "snpsgo": "SNPs\&GO", "phdsnp": "PhD\-SNP", "metasnp": "Meta-SNP", "drcancer": "DrCancer","phdsnpg": "PhD\-SNPg", "contrastrank": "ContrastRank", "fidosnp": "Fido\-SNP"  };
         if (htool[name] === undefined )
@@ -171,96 +255,91 @@ if (supportsPassive) {
         {
         	var geoname=htool[name];
         }
-        var marlayer = new OpenLayers.Icon("maps/img/"+mcolor+"-ball.png", new OpenLayers.Size(11,11));
+
+        var marlayer = L.icon({
+                  iconUrl: "maps/img/"+mcolor+"-ball.png", // Path to your second custom marker icon
+                  iconSize: [9, 9] // Size of the icon [width, height]
+              });
         var filename="maps/georss/access_"+name+year+month+".xml";
+        console.log(CheckDate(month,year),filename)
         if (CheckDate(month,year) == true)
         {
-        	var slayer = new OpenLayers.Layer.GeoRSS( geoname, filename, {'icon': marlayer});
+             var slayer = L.layerGroup().addTo(map);
+             layerGroups.push(slayer);
+             loadCoordinates(filename, slayer, marlayer);
         }
         else
         {
         	var nologfile = "maps/georss/nolog.xml";
-        	var slayer = new OpenLayers.Layer.GeoRSS( geoname, nologfile, {'icon': marlayer});
+            var slayer = L.layerGroup().addTo(map);
+            layerGroups.push(slayer);
+            loadCoordinates(nologfile, slayer, marlayer);
         }
         return slayer;
         }
-        
 
-    function timemap(month,year)
-    	{
-        	
-        map = new OpenLayers.Map('map');
 
-        var satellite = new OpenLayers.Layer.Google(
-            "Google Map")
-            
-        var mbass = new OpenLayers.Icon("maps/img/bass.png", new OpenLayers.Size(13,13));
-        var sbass = new OpenLayers.Layer.GeoRSS( 'unibo', "maps/georss/unibo.xml", {'icon': mbass});
-			
-		var snps = addServer('snps',month,year,'yellow');
-		var phdsnp = addServer('phdsnp',month,year,'orange');
-		var snpsgo = addServer('snpsgo',month,year,'red');
-		var drcancer = addServer('drcancer',month,year,'blu');
-		var metasnp = addServer('metasnp',month,year,'green');
-		var contrastrank = addServer('contrastrank',month,year,'pink');
-		var phdsnpg = addServer('phdsnpg',month,year,'white');
-		var fidosnp = addServer('fidosnp',month,year,'brown');
-    	map.addLayers([satellite,snps,phdsnp,snpsgo,drcancer,metasnp,contrastrank,phdsnpg,fidosnp,sbass]); 
-	map.setCenter(new OpenLayers.LonLat(0,0), 1);
-    	map.addControl( new OpenLayers.Control.LayerSwitcher() );
-		}
-	
+function timemap(month,year) {
+    console.log(month,year)
+        if (map) {
+          clearLayerGroups();
+        }
+        initializeMap();
+
+
+        var mbass = L.icon({
+                  iconUrl: 'maps/img/bass.png', // Path to your second custom marker icon
+                  iconSize: [13, 13] // Size of the icon [width, height]
+              });
+        var sbass = L.layerGroup().addTo(map);
+
+        layerGroups.push(sbass);
+        loadCoordinates('maps/georss/unibo.xml', sbass, mbass);
+        var snps = addServer(map,layerGroups,'snps',month,year,'yellow');
+        var phdsnp = addServer(map,layerGroups,'phdsnp',month,year,'orange');
+
+        var snpsgo = addServer(map,layerGroups,'snpsgo',month,year,'red');
+		var drcancer = addServer(map,layerGroups,'drcancer',month,year,'blu');
+		var metasnp = addServer(map,layerGroups,'metasnp',month,year,'green');
+		var contrastrank = addServer(map,layerGroups,'contrastrank',month,year,'pink');
+		var phdsnpg = addServer(map,layerGroups,'phdsnpg',month,year,'white');
+		var fidosnp = addServer(map,layerGroups,'fidosnp',month,year,'brown');
+        }
+
+
 	    function get_time()
-    	{ 
+    	{
     	var i;
     	var month=document.selectlog.month.value;
     	var year=document.selectlog.year.value;
+        if (map) {
+          clearLayerGroups();
+        }
+        initializeMap();
 
-		map.layers[1].destroy();		
 
-		map.layers[1].destroy();
-		var nsnps = addServer('snps',month,year,'yellow');
-		map.addLayer(nsnps);
-    	
-		map.layers[1].destroy();
-		var nphdsnp = addServer('phdsnp',month,year,'orange');
-		map.addLayer(nphdsnp);
-		
-		map.layers[1].destroy();
-    		var nsnpsgo = addServer('snpsgo',month,year,'red');
-    		map.addLayer(nsnpsgo); 
-    	
-		map.layers[1].destroy();
-		var ndrcancer = addServer('drcancer',month,year,'blu');
-		map.addLayer(ndrcancer);
+        var mbass = L.icon({
+                  iconUrl: 'maps/img/bass.png', // Path to your second custom marker icon
+                  iconSize: [13, 13] // Size of the icon [width, height]
+              });
+        var sbass = L.layerGroup().addTo(map);
 
-		map.layers[1].destroy();
-		var nmetasnp = addServer('metasnp',month,year,'green');
-		map.addLayer(nmetasnp);	
+        layerGroups.push(sbass);
+        loadCoordinates('maps/georss/unibo.xml', sbass, mbass);
+        var snps = addServer(map,layerGroups,'snps',month,year,'yellow');
+        var phdsnp = addServer(map,layerGroups,'phdsnp',month,year,'orange');
 
-		map.layers[1].destroy();
-		var ncontrastrank = addServer('contrastrank',month,year,'pink');
-		map.addLayer(ncontrastrank);
-
-		map.layers[1].destroy();
-                var nphdsnpg = addServer('phdsnpg',month,year,'white');
-                map.addLayer(nphdsnpg);
-
-		map.layers[1].destroy();
-		var nfidosnp = addServer('fidosnp',month,year,'brown');
-		map.addLayer(nfidosnp);
-   
-		var mbass = new OpenLayers.Icon("maps/img/bass.png", new OpenLayers.Size(13,13));
-		var sbass = new OpenLayers.Layer.GeoRSS( 'unibo', "maps/georss/unibo.xml", {'icon': mbass});
-		map.addLayer(sbass);
-
-    	map.updateSize();
-
+        var snpsgo = addServer(map,layerGroups,'snpsgo',month,year,'red');
+		var drcancer = addServer(map,layerGroups,'drcancer',month,year,'blu');
+		var metasnp = addServer(map,layerGroups,'metasnp',month,year,'green');
+		var contrastrank = addServer(map,layerGroups,'contrastrank',month,year,'pink');
+		var phdsnpg = addServer(map,layerGroups,'phdsnpg',month,year,'white');
+		var fidosnp = addServer(map,layerGroups,'fidosnp',month,year,'brown');
     	/*var pp = document.getElementById('map').innerHtml;
     	document.write(pp);*/
     	return false;
     	}
-    
+
     function get_now() 
     	{
     	var today = new Date();
@@ -270,39 +349,61 @@ if (supportsPassive) {
         timemap(lmonth[month],year);
     	return false;
     	}
-    	
-    function show_layer(servername)
-    	{
-    	var i;
-    	var ntool = {"SNPs\@BioFolD": 1, "SNPs\&GO": 3, "PhD\-SNP": 2, "DrCancer": 4, "unibo": 9, "Meta\-SNP": 5, "ContrastRank": 6 , "PhD\-SNPg": 7, "Fido\-SNP": 8 };
-    	var numserver = ntool[servername];
-   		for (i = 1; i <= 8; i++)
-    	{
-    	if (i != numserver)
-    	{
-    		map.layers[i].setVisibility(false);  
-    	}
-    	else
-    	{
-    		map.layers[i].setVisibility(true);
-    	}   	
-    	}
-    	//map.refresh();
-    	return false;
-    	}
-    	
-    function show_alllayer()
-    	{
-    	var i;
-   		for (i = 1; i <= 8; i++)
-    	{
-    		map.layers[i].setVisibility(true);
-    	}   	
-    	//map.refresh();
-    	return false;
-    	}
-    
+
+      function show_layer(servername) {
+        var ntool = {
+        "SNPs@BioFolD": 1,
+        "SNPs&GO": 3,
+        "PhD-SNP": 2,
+        "DrCancer": 4,
+        "unibo": 0,
+        "Meta-SNP": 5,
+        "ContrastRank": 6,
+        "PhD-SNPg": 7,
+        "Fido-SNP": 8
+        };
+
+
+        // Get the corresponding layer number for the server name
+        var numserver = ntool[servername];
+
+        // Check if the server name is valid
+        if (numserver === undefined) {
+           console.error("Invalid server name:", servername);
+           return false; // Early exit if the server name is not valid
+        }
+
+        // Loop through layers to set their visibility
+        layerGroups.forEach(function(layer, index) {
+        // Change visibility based on the layer index (adjusted for 0-based index)
+        if (index === numserver) {
+            layer.addTo(map); // Add layer to map to make it visible
+        } else {
+            map.removeLayer(layer); // Remove layer from map to make it invisible
+        }
+    });
+
+        // Optionally refresh the map (if necessary)
+        // map.refresh();
+
+        return false;
+        }
+
+      function show_alllayer() {
+
+        // Loop through layers to set their visibility
+        layerGroups.forEach(function(layer, index) {
+        // Change visibility based on the layer index (adjusted for 0-based index)
+          layer.addTo(map); // Add layer to map to make it visible
+        });
+
+        // Optionally refresh the map (if necessary)
+        // map.refresh();
+        return false;
+        }
+
    </script>
+
 
   <body onload="get_now();">
     <br>

@@ -93,6 +93,7 @@ if (supportsPassive) {
 
 </script>
 
+<link rel="stylesheet" href="maps/leaflet.css" />
 	   
   </head>
   
@@ -127,25 +128,108 @@ if (supportsPassive) {
     }
     }
 </script>
-<script src='https://maps.google.com/maps/api/js?key=AIzaSyAlKuK_9CqcaM0izyTY1nigUJAKSjvW_KI&v=3&callback=Function.prototype'></script>
-    <script src="maps/OpenLayers.js">
-    </script>
-    
-    
+
+<script src="maps/leaflet.js"></script>
+
     <script type="text/javascript">
-    var map;
-        
-        
+
+      var map;
+      var layerGroups = [];
+
+      function initializeMap() {
+            if (map) {
+                map.remove();
+            }
+            map = L.map('map', { attributionControl: false, zoomControl: false }).setView([0, 0], 1);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+            }).addTo(map);
+
+                var customControl = L.Control.extend({
+                onAdd: function() {
+                    var container = L.DomUtil.create('div', 'leaflet-control leaflet-bar');
+
+                    // Create zoom in button
+                    var zoomInButton = L.DomUtil.create('a', 'leaflet-control-zoom-in', container);
+                    zoomInButton.innerHTML = '+';
+                    zoomInButton.href = '#';
+                    zoomInButton.onclick = function(e) {
+                        e.preventDefault();
+                        map.zoomIn();
+                    };
+
+                    // Create reset button
+                    var resetButton = L.DomUtil.create('a', 'reset-button', container);
+                    resetButton.innerHTML = 'Reset';
+                    resetButton.href = '#';
+                    resetButton.onclick = function(e) {
+                        e.preventDefault();
+                        map.setView([0, 0], 1); // Reset to initial coordinates and zoom level
+                    };
+
+                    // Create zoom out button
+                    var zoomOutButton = L.DomUtil.create('a', 'leaflet-control-zoom-out', container);
+                    zoomOutButton.innerHTML = '-';
+                    zoomOutButton.href = '#';
+                    zoomOutButton.onclick = function(e) {
+                        e.preventDefault();
+                        map.zoomOut();
+                    };
+
+                    return container;
+                },
+                onRemove: function(map) {
+                    // Nothing to do here
+                }
+            });
+
+            // Add the custom control to the map
+            map.addControl(new customControl({ position: 'topleft' }));
+        }
+
+
+      function clearLayerGroups() {
+            layerGroups.forEach(layerGroup => {
+                layerGroup.clearLayers();
+                map.removeLayer(layerGroup);
+            });
+            layerGroups = [];
+        }
+
+
+      // Function to load coordinates from a JSON file and add them to the specified layer group with the specified icon
+              function loadCoordinates(file, layerGroup, icon) {
+                 fetch(file)
+                .then(response => response.text())
+                .then(data => {
+                    var parser = new DOMParser();
+                    var xmlDoc = parser.parseFromString(data, "application/xml");
+                    var locations = xmlDoc.getElementsByTagName('item');
+                    for (var i = 0; i < locations.length; i++) {
+                        var lat = parseFloat(locations[i].getElementsByTagName('geo:lat')[0].textContent);
+                        var lng = parseFloat(locations[i].getElementsByTagName('geo:long')[0].textContent);
+                        var name = locations[i].getElementsByTagName('description')[0].textContent;
+
+                        // Add a marker for each location with the custom icon
+                        L.marker([lat, lng], { icon: icon })
+                            .addTo(layerGroup)
+                            .bindPopup(name);
+                    }
+                })
+                .catch(error => console.error('Error loading coordinates:', error));
+        }
+
+
     function CheckDate(month,year)
 		{
-		var dmonth = {"": 0, "01": 1,"02": 2,"03": 3,"04": 4,"05": 5,"06": 6,"07": 7,"08":8,"09": 9,"10": 10,"11": 11,"12": 12 };	
+		var dmonth = {"": 0, "01": 1,"02": 2,"03": 3,"04": 4,"05": 5,"06": 6,"07": 7,"08":8,"09": 9,"10": 10,"11": 11,"12": 12 };
 		var today = new Date();
         var this_year = today.getFullYear();
         var this_month = today.getMonth()+1;
         var long_today = this_year*100+this_month;
         var long_date = year*100+dmonth[month];
-        /* Server up since September2011 = 201209 */
-		if ( (long_date>=201109 || long_date==201100 ) && long_date<=long_today )
+        /* Server up since Oct2010 = 201010 */
+		if ( (long_date>=201010 || long_date==201000 ) && long_date<=long_today )
 		{
 			return true;
 		}
@@ -153,10 +237,10 @@ if (supportsPassive) {
 		{
 			return false;
 		}
-		}    
-        
-        
-    function addServer(name,month,year,mcolor)
+		}
+
+
+    function addServer(map,layerGroups,name,month,year,mcolor)
         {
         var htool = {"folding": "Folding@BioFolD", "imutant": "I-Mutant", "kfold": "K-Fold", 'thermoscan': "ThermoScan", 'kpro': 'K-Pro', 'ddgun':'DDGun'};
         if (htool[name] === undefined )
@@ -167,90 +251,87 @@ if (supportsPassive) {
         {
         	var geoname=htool[name];
         }
-        var marlayer = new OpenLayers.Icon("maps/img/"+mcolor+"-ball.png", new OpenLayers.Size(11,11));
+
+        var marlayer = L.icon({
+                  iconUrl: "maps/img/"+mcolor+"-ball.png", // Path to your second custom marker icon
+                  iconSize: [9, 9] // Size of the icon [width, height]
+              });
         var filename="maps/georss/access_"+name+year+month+".xml";
+
         if (CheckDate(month,year) == true)
         {
-        	var slayer = new OpenLayers.Layer.GeoRSS( geoname, filename, {'icon': marlayer});
+             var slayer = L.layerGroup().addTo(map);
+             layerGroups.push(slayer);
+             loadCoordinates(filename, slayer, marlayer);
         }
         else
         {
         	var nologfile = "maps/georss/nolog.xml";
-        	var slayer = new OpenLayers.Layer.GeoRSS( geoname, nologfile, {'icon': marlayer});
+            var slayer = L.layerGroup().addTo(map);
+            layerGroups.push(slayer);
+            loadCoordinates(nologfile, slayer, marlayer);
         }
         return slayer;
         }
-        
-
-    function timemap(month,year)
-    	{
-        	
-        map = new OpenLayers.Map('map');
-
-        var satellite = new OpenLayers.Layer.Google(
-            "Google Map")
-            
-        var mbass = new OpenLayers.Icon("maps/img/bass.png", new OpenLayers.Size(13,13));
-        var sbass = new OpenLayers.Layer.GeoRSS( 'unibo', "maps/georss/unibo.xml", {'icon': mbass});
-		
-		var folding = addServer('folding',month,year,'yellow');
-		var imutant = addServer('imutant',month,year,'orange');
-		var kfold = addServer('kfold',month,year,'blu');
-		var thermoscan = addServer('thermoscan',month,year,'red');
-		var kpro = addServer('kpro',month,year,'green');
-		var ddgun = addServer('ddgun',month,year,'white');
-
-    	map.addLayers([satellite,folding,imutant,kfold,thermoscan,kpro,ddgun,sbass]); 
 
 
-		map.setCenter(new OpenLayers.LonLat(0,0), 1);
-    	map.addControl( new OpenLayers.Control.LayerSwitcher() );
-		}
-	
+function timemap(month,year) {
+        if (map) {
+          clearLayerGroups();
+        }
+        initializeMap();
+
+
+        var mbass = L.icon({
+                  iconUrl: 'maps/img/bass.png', // Path to your second custom marker icon
+                  iconSize: [13, 13] // Size of the icon [width, height]
+              });
+        var sbass = L.layerGroup().addTo(map);
+
+        layerGroups.push(sbass);
+        loadCoordinates('maps/georss/unibo.xml', sbass, mbass);
+        var folding = addServer(map,layerGroups,'folding',month,year,'yellow');
+        var imutant = addServer(map,layerGroups,'imutant',month,year,'orange');
+
+        var kfold = addServer(map,layerGroups,'kfold',month,year,'blu');
+		var thermoscan = addServer(map,layerGroups,'thermoscan',month,year,'red');
+		var kpro = addServer(map,layerGroups,'kpro',month,year,'green');
+		var ddgun = addServer(map,layerGroups,'ddgun',month,year,'white');
+        }
+
+
 	    function get_time()
-    	{ 
+    	{
     	var i;
     	var month=document.selectlog.month.value;
     	var year=document.selectlog.year.value;
+        if (map) {
+          clearLayerGroups();
+        }
+        initializeMap();
 
-		map.layers[1].destroy();
-			
-		map.layers[1].destroy();
-		var nfolding = addServer('folding',month,year,'yellow');
-		map.addLayer(nfolding);
-    	
-		map.layers[1].destroy();
-		var nimutant = addServer('imutant',month,year,'orange');
-		map.addLayer(nimutant);
 
-		map.layers[1].destroy();
-		var nkfold = addServer('kfold',month,year,'blu');
-		map.addLayer(nkfold);
+        var mbass = L.icon({
+                  iconUrl: 'maps/img/bass.png', // Path to your second custom marker icon
+                  iconSize: [13, 13] // Size of the icon [width, height]
+              });
+        var sbass = L.layerGroup().addTo(map);
 
-		map.layers[1].destroy();
-                var nthermoscan = addServer('thermoscan',month,year,'red');
-                map.addLayer(nthermoscan);
+        layerGroups.push(sbass);
+        loadCoordinates('maps/georss/unibo.xml', sbass, mbass);
+        var folding = addServer(map,layerGroups,'folding',month,year,'yellow');
+        var imutant = addServer(map,layerGroups,'imutant',month,year,'orange');
 
-		map.layers[1].destroy();
-                var nkpro = addServer('kpro',month,year,'green');
-                map.addLayer(nkpro);
-
-		map.layers[1].destroy();
-		var nddgun = addServer('ddgun',month,year,'white');
-		map.addLayer(nddgun);
-	
-		var mbass = new OpenLayers.Icon("maps/img/bass.png", new OpenLayers.Size(13,13));
-		var sbass = new OpenLayers.Layer.GeoRSS( 'unibo', "maps/georss/unibo.xml", {'icon': mbass});
-		map.addLayer(sbass);
-
-    	map.updateSize();
-
+        var kfold = addServer(map,layerGroups,'kfold',month,year,'blu');
+		var thermoscan = addServer(map,layerGroups,'thermoscan',month,year,'red');
+		var kpro = addServer(map,layerGroups,'kpro',month,year,'green');
+		var ddgun = addServer(map,layerGroups,'ddgun',month,year,'white');
     	/*var pp = document.getElementById('map').innerHtml;
     	document.write(pp);*/
     	return false;
     	}
-    
-    function get_now() 
+
+    function get_now()
     	{
     	var today = new Date();
         var year = today.getFullYear();
@@ -259,39 +340,59 @@ if (supportsPassive) {
         timemap(lmonth[month],year);
     	return false;
     	}
-    	
-    function show_layer(servername)
-    	{
-    	var i;
-    	var ntool = {"Folding\@BioFolD": 1, "I-Mutant": 2, "K-Fold": 3, "ThermoScan":4, "K-Pro": 5, "DDGun": 6, "unibo": 7 };
-    	var numserver = ntool[servername];
-   		for (i = 1; i <= 6; i++)
-    	{
-    	if (i != numserver)
-    	{
-    		map.layers[i].setVisibility(false);  
-    	}
-    	else
-    	{
-    		map.layers[i].setVisibility(true);
-    	}   	
-    	}
-    	//map.refresh();
-    	return false;
-    	}
-    	
-    function show_alllayer()
-    	{
-    	var i;
-   		for (i = 2; i <= 6; i++)
-    	{
-    		map.layers[i].setVisibility(true);
-    	}   	
-    	//map.refresh();
-    	return false;
-    	}
-    
+
+      function show_layer(servername) {
+        var ntool = {
+        "Folding@BioFolD": 1,
+        "I-Mutant": 2,
+        "K-Fold": 3,
+        "ThermoScan": 4,
+        "unibo": 0,
+        "K-Pro": 5,
+        "DDGun": 6
+        };
+
+        // Get the corresponding layer number for the server name
+        var numserver = ntool[servername];
+
+        // Check if the server name is valid
+        if (numserver === undefined) {
+           console.error("Invalid server name:", servername);
+           return false; // Early exit if the server name is not valid
+        }
+
+        // Loop through layers to set their visibility
+        layerGroups.forEach(function(layer, index) {
+        // Change visibility based on the layer index (adjusted for 0-based index)
+        if (index === numserver) {
+            layer.addTo(map); // Add layer to map to make it visible
+        } else {
+            map.removeLayer(layer); // Remove layer from map to make it invisible
+        }
+    });
+
+        // Optionally refresh the map (if necessary)
+        // map.refresh();
+
+        return false;
+        }
+
+      function show_alllayer() {
+
+        // Loop through layers to set their visibility
+        layerGroups.forEach(function(layer, index) {
+        // Change visibility based on the layer index (adjusted for 0-based index)
+          layer.addTo(map); // Add layer to map to make it visible
+        });
+
+        // Optionally refresh the map (if necessary)
+        // map.refresh();
+        return false;
+        }
+
    </script>
+
+
 
   <body onload="get_now();">
     <br>
