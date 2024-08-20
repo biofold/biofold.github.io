@@ -140,7 +140,7 @@ if (supportsPassive) {
             if (map) {
                 map.remove();
             }
-            map = L.map('map', { attributionControl: false, zoomControl: false }).setView([0, 0], 1);
+            map = L.map('map', { attributionControl: false, zoomControl: false }).setView([35, 10], 1);
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19,
             }).addTo(map);
@@ -164,7 +164,7 @@ if (supportsPassive) {
                     resetButton.href = '#';
                     resetButton.onclick = function(e) {
                         e.preventDefault();
-                        map.setView([0, 0], 1); // Reset to initial coordinates and zoom level
+                        map.setView([35, 10], 1); // Reset to initial coordinates and zoom level
                     };
 
                     // Create zoom out button
@@ -184,7 +184,7 @@ if (supportsPassive) {
             });
 
             // Add the custom control to the map
-            map.addControl(new customControl({ position: 'topleft' }));
+            map.addControl(new customControl({ position: 'bottomleft' }));
         }
 
 

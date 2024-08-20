@@ -1,6 +1,28 @@
 /* ********************************************** */
 
 
+        /* Container to hold the select and button elements */
+        .container {
+            display: flex;
+            align-items: center;
+            /* gap: 10px; /* Space between the select and button */
+        }
+
+        /* Normalize the appearance of select and button */
+        select, button {
+            height: 25px; /* Set desired height */
+            font-size: 16px; /* Consistent font size */
+            padding: 0 10px; /* Adjust padding to match look */
+            box-sizing: border-box; /* Include padding in height */
+            line-height: normal; /* Normalize line height */
+        }
+
+        button {
+            background-color: #f8f8f8;
+            cursor: pointer;
+            vertical-align: middle; 
+        }
+
 
 
 #maplegend {
@@ -11,8 +33,8 @@
 }
 
 .mediummap {
-    width: 640px;
-    height: 480px;
+    width: 540px;
+    height: 400px;
     position: center;
     border: 1px solid #ccc;
     margin-left: auto;
