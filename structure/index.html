@@ -121,7 +121,7 @@ if (supportsPassive) {
     }
     function writeTools()
     {
-    var Tools=["ALL","SARA","Structure"];
+    var Tools=["ALL","SARA","is-pero","Structure"];
     for (optionCounter = 0; optionCounter <= 2; optionCounter++)
     {
     document.write('<OPTION value=' + Tools[optionCounter] + '>' + Tools[optionCounter]);
@@ -242,7 +242,7 @@ if (supportsPassive) {
 
     function addServer(map,layerGroups,name,month,year,mcolor)
         {
-        var htool = {"structure": "Structure@BioFolD", "sara": "SARA" };
+        var htool = {"structure": "Structure@BioFolD", "sara": "SARA", "ispero": "is-pero" };
         if (htool[name] === undefined )
         {
         	var geoname="Other";
@@ -292,6 +292,7 @@ function timemap(month,year) {
         loadCoordinates('maps/georss/unibo.xml', sbass, mbass);
         var structure = addServer(map,layerGroups,'structure',month,year,'yellow');
         var sara = addServer(map,layerGroups,'sara',month,year,'orange');
+        var ispero = addServer(map,layerGroups,'ispero',month,year,'green');
         }
 
 
@@ -316,6 +317,7 @@ function timemap(month,year) {
         loadCoordinates('maps/georss/unibo.xml', sbass, mbass);
         var structure = addServer(map,layerGroups,'structure',month,year,'yellow');
         var sara = addServer(map,layerGroups,'sara',month,year,'orange');
+        var ispero = addServer(map,layerGroups,'ispero',month,year,'green');
 
     	/*var pp = document.getElementById('map').innerHtml;
     	document.write(pp);*/
@@ -336,6 +338,7 @@ function timemap(month,year) {
         var ntool = {
         "Structure\@BioFolD": 1,
         "SARA": 2,
+        "is-pero": 3,
         "unibo": 0,
         };
 
@@ -496,6 +499,8 @@ function timemap(month,year) {
      <a style="cursor: pointer;" onclick='show_layer("Structure\@BioFolD");' >Structure@BioFolD</a> &nbsp;
      <img src="maps/img/orange-ball.png" width="11" height="11"  > 
      <a style="cursor: pointer;" onclick='show_layer("SARA");' >SARA</a> &nbsp;
+     <img src="maps/img/green-ball.png" width="11" height="11"  >
+     <a style="cursor: pointer;" onclick='show_layer("is-pero");' >is-pero</a> &nbsp;
      </div>
 
      

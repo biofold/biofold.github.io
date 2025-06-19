@@ -185,7 +185,7 @@ table.radio: td {
 
 .footer-ok::after {
  color: white;
- content: 'BioFolD Unit - University of Bologna, Via F. Selmi 3, Bologna, 40126 (Italy).';
+ content: 'BioFolD Unit - University of Bologna, Via P. Gobetti 87, Bologna, 40129 (Italy).';
 }
 
 .biofold {
@@ -224,7 +224,7 @@ td.photo {
 
 
 td.footer::after {
-content: 'University of Bologna, Via F. Selmi 3, Room 104. Bologna, 40126 (Italy).';
+content: 'University of Bologna, Via P. Gobetti 87, Room 104. Bologna, 40129 (Italy).';
 }
 
 td.pathogenic  {
