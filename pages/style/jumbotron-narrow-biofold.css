@@ -19,6 +19,18 @@ a {
   background: white !important;
 }
 
+/* Funding */
+.funding-note {
+    color: #666;               /* Soft grey color */
+    font-size: 0.85em;         /* Smaller but not tiny */
+    font-style: normal;        /* Removes the italics */
+    text-align: left;          /* Force left alignment */
+    /* border-bottom: 1px solid #e0e0e0; /* Subtle separator line */
+    padding-top: 8px;          /* Space above the text */
+    margin-top: 8px;           /* Space below the paragraph */
+}
+
+
 /* Custom page header */
 .header {
   padding-bottom: 20px;

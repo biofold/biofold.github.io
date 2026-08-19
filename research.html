@@ -57,36 +57,39 @@
             The BioFolD group focuses on bridging computational biology, machine learning, and clinical genomics to understand the relationship between genetic variation and human disease. Our mission is to develop accessible, cutting-edge tools and infrastructures that translate complex genomic data into actionable clinical insights, with a strong emphasis on rare diseases, precision medicine, and responsible, FAIR data sharing.
         </p>
         <br>
+
         <div class="text">
             <h4 class="section">Genomic Variations and Disease</h4>
         </div>
         <table border=0 cellpadding="7" cellspacing="7" class="paper">
             <tbody><tr><td valign=top>
-                <!-- Suggested replacement image: pages/img/multiomic_integration.png or pages/img/federated_learning_network.png -->
                 <p class='text'><img src="pages/img/disease.png" alt="Genomics and Disease" width="40%" align="right"  /></p>
                 <p class="text">
                 We develop machine learning algorithms to distinguish disease-related mutations from neutral polymorphisms. Our foundational tools such as <a target=blank href="http://snps.biofold.org/phd-snp">PhD-SNP</a> and <a target=blank href="http://snps.biofold.org/snps-and-go">WS-SNPs&GO</a> integrate sequence, evolutionary, and functional annotations (Gene Ontology) to predict variant pathogenicity. We recently updated our flagship lightweight tool, <a target=blank href="http://snps.biofold.org/phd-snpg">PhD-SNPg</a>, to handle both coding and non-coding nucleotide variants using gradient boosting.<br>
-                Our current efforts focus on **multi-omic data integration**. As part of the Italian PNRR Rare Disease project, we combine exome sequencing, transcriptomics, and DNA methylation episignatures to solve previously undiagnosed rare disease cases. We are also contributing to the ELIXIR federated infrastructure (ENIGMA & BioChef), implementing GA4GH standards (FAIR-compliant Variant Matching) to enable privacy-preserving cross-border analysis of genomic and imaging data. Our group contributed to a proof-of-concept study demonstrating the effectiveness of <b>Federated Learning (FL)</b> for the clinical classification of coding and non-coding SNVs and CNVs (<a target=blank href="https://doi.org/10.1093/bioinformatics/btaf523">Montalvo et al., Bioinformatics, 2025</a>), supporting the adoption of secure, multi-institutional collaborations for human variant interpretation.
+                Our current efforts focus on multi-omic data integration. As part of the Italian PNRR Rare Disease project (<a target=blank href="https://www.pnrr.it/">PNRR-MR1-2022-12376067</a>), we combine exome sequencing, transcriptomics, and DNA methylation episignatures to solve previously undiagnosed rare disease cases. We are also contributing to the ELIXIR federated infrastructure (<b>ENIGMA</b> and <b>BioChef</b> projects), implementing GA4GH standards (FAIR-compliant Variant Matching) to enable privacy-preserving cross-border analysis of genomic and imaging data. Our group contributed to a proof-of-concept study demonstrating the effectiveness of <b>Federated Learning (FL)</b> for the clinical classification of coding and non-coding SNVs and CNVs (<a target=blank href="https://doi.org/10.1093/bioinformatics/btaf523">Montalvo et al., Bioinformatics, 2025</a>), supporting the adoption of secure, multi-institutional collaborations for human variant interpretation.
                 </p>
+                <div class="funding-note">Supported by: Italian Ministry of Health (PNRR-MR1-2022-12376067), ELIXIR Europe (ENIGMA & BioChef), Italian MIUR (PRIN-201744NR8S), NIH USA (1R21AI117703-01A1, 1R21AI134027-01A1), Spanish Ministry of Science (DPI2015-67082-P), and EU Marie Curie (PIOF-GA-2009-237225).</p>
             </td></tr></tbody>
         </table>
         <br>
+
         <div class="text">
             <h4 class="section">Protein Folding Stability and Kinetics</h4>
         </div>
         <table cellpadding="7" cellspacing="7" class="paper">
             <tbody><tr><td>
                 <div align="left">
-                    <!-- Suggested replacement image: pages/img/free_energy_landscape.png -->
                     <p class="text"><img src="pages/img/folding.png" alt="Protein Stability" width="40%" align="left" /></p>
                     <p class="text">
                         We pioneer methods to predict the thermodynamic and kinetic effects of mutations. Our foundational <a target=blank href="http://folding.biofold.org/i-mutant">I-Mutant2.0</a> and <a target=blank href="http://folding.biofold.org/k-fold">K-Fold</a> tools paved the way for predicting protein stability and folding rates from sequence and structure.<br>
                         Our latest tool, <b>DDGun</b> (<a target=blank href="http://folding.biofold.org/ddgun">http://folding.biofold.org/ddgun</a>), is a novel, untrained ensemble method that accurately predicts stability changes (ΔΔG) upon single and multiple point mutations. We have also developed <b>K-Pro</b> and <b>ThermoScan</b>—specialized databases and text-mining resources that curate thermodynamic data from scientific literature. Our methods are consistently validated through blind community challenges (CAGI), including our contributions as organizers in the Frataxin, Calmodulin, and MAPKs challenges.
                     </p>
+                    <div class="funding-note">Supported by: Italian MIUR (PRIN-201744NR8S), EU Marie Curie (PIOF-GA-2009-237225), and NIH USA (1R21AI117703-01A1).</div>
                 </div>
             </td></tr></tbody>
         </table>
         <br>
+
         <div class="text">
             <h4 class="section">RNA and Protein Structure Comparison and Prediction</h4>
         </div>
@@ -98,9 +101,11 @@
                     By merging the SARA algorithm with the T-Coffee sequence aligner, we developed <a target=blank href="http://www.tcoffee.org/Projects/saracoffee/">SARA-Coffee</a>. This integrated tool enables the computation of highly accurate multiple RNA structural alignments by combining tertiary structure information with sequence conservation, allowing for a more robust detection of distant evolutionary relationships.<br>
                     In collaboration with the research group of Prof. Francisco Melo at the Pontificia Universidad Católica de Chile, we contributed to the development of <b>WebRASP</b> (<a target=blank href="http://melolab.org/webrasp">http://melolab.org/webrasp</a>). WebRASP is an all-atom knowledge-based statistical potential used to score the quality of RNA three-dimensional models and to select near-native structures from decoy sets, which is an essential step for de novo RNA structure prediction and quality assessment.
                 </p>
+                <div class="funding-note">Supported by: EU Marie Curie Reintegration Grant (IRG39722), the Valencian Government.</div>
             </td></tr></tbody>
         </table>
         <br>
+
         <div class="text">
             <h4 class="section">Federated Health Data & Global Cooperation</h4>
         </div>
@@ -110,9 +115,11 @@
                     As a WP Co-Leader in the ELIXIR Human Data and Translational Research (HDTR) project, BioFolD is actively building the next generation of <b>federated data infrastructures</b> across Europe. By developing privacy-preserving, containerized workflows for the ENIGMA (genomics-imaging) and BioChef (hybrid workflow) platforms, we are enabling researchers to securely analyze sensitive health data across multiple countries without moving the data itself.<br>
                     We extend our impact globally through the <b>RaDAr-IT</b> project (Patient-Oriented Data Pathways for Rare Disease Equity in Argentina). As principal investigator, BioFolD leads a cooperation between the University of Bologna and Argentinian partners (Universidad Nacional de Rosario, FundHemi) to train local professionals in FAIR data practices, variant interpretation, and responsible data governance.
                 </p>
+                <div class="funding-note">Supported by: ELIXIR Europe (HDTR: ENIGMA & BioChef, EGA Commissioned Service), University of Bologna (Global South Cooperation - RaDAr-IT, UNIBO-UCSD Cooperation Grant).</div>
             </td></tr></tbody>
         </table>
         <br>
+
         <div class="text">
             <h4 class="section">Open and Sustainable AI (OSAI) Contributions</h4>
         </div>
@@ -121,6 +128,7 @@
                 <p class="text">
                     We contributed to the community-driven <b>DOME Recommendations</b> for supervised machine learning validation in biology (<a target=blank href="https://doi.org/10.1038/s41592-021-01205-4">Walsh et al., Nature Methods, 2021</a>), which established reporting guidelines to improve reproducibility and assessment in biological ML studies. More recently, we co-authored the <b>Open and Sustainable AI (OSAI)</b> Perspective in <i>Nature Methods</i> (<a target=blank href="https://doi.org/10.1038/s41592-026-03037-6">Farrell et al., 2026</a>), providing actionable recommendations to address the reusability, reproducibility, and environmental sustainability of AI models in the life sciences. We aim to apply these best practices across our own tools and federated infrastructures, ensuring that the computational resources we develop remain open, FAIR, and environmentally sustainable.
                 </p>
+                <div class="funding-note">Supported by: ELIXIR Europe, Italian MIUR, and the PNRR Rare Disease project.</div>
             </td></tr></tbody>
         </table>
         <br>
