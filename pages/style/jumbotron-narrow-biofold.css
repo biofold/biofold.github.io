@@ -26,7 +26,7 @@ a {
     font-style: normal;        /* Removes the italics */
     text-align: left;          /* Force left alignment */
     /* border-bottom: 1px solid #e0e0e0; /* Subtle separator line */
-    padding-top: 8px;          /* Space above the text */
+    padding-top: 4px;          /* Space above the text */
     margin-top: 8px;           /* Space below the paragraph */
 }
 
